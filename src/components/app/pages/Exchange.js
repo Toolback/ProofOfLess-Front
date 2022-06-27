@@ -8,11 +8,18 @@ import { getCProvider } from '../../../utils/functions/getCProvider';
 
 // import { provider } from 'web3'
 
-const jsonRpcEndPoint = "https://polygon-mumbai.g.alchemy.com/v2/pCiM9OJB_7EqE0lZ4Po19LqzoHkwlzVs"
 
-const {provider} = getCProvider()
 
 const AppExchange = () => {
+  let provider;
+  if (typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
+    provider = new ethers.providers.Web3Provider(window.ethereum)
+  } else {
+    provider = new ethers.providers.JsonRpcProvider(
+      "https://polygon-mumbai.g.alchemy.com/v2/pCiM9OJB_7EqE0lZ4Po19LqzoHkwlzVs")
+  };
+  const jsonRpcEndPoint = "https://polygon-mumbai.g.alchemy.com/v2/pCiM9OJB_7EqE0lZ4Po19LqzoHkwlzVs"
+
   return (
     <div className='exchange-gridContainer'>
       <div className="Uniswap">
