@@ -14,7 +14,7 @@ const NavBar = () => {
   
     return (
         <div className="NavBar-box-container noselect">
-                <a href="/"><img className="NavBar-NavBar-LeftSide-Logo" src={lessLogo} /></a>
+                <a href="/"><img className="NavBar-NavBar-LeftSide-Logo" src={lessLogo} alt=""/></a>
 
                 <div className="NavBar-NavBar-ButtonsContainer">
                     <button className="NavBar-ButtonsNav" onClick={() => handleNavClick('initialize')}>Community</button>

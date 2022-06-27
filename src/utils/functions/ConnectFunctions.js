@@ -1,17 +1,20 @@
-
-
+import { ethers } from "ethers";
 
 // Wallect Connect 
 
 export const connectWallet = async () => {
-  if (window.ethereum) {
+  if (typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
     try {
       const addressArray = await window.ethereum.request({
         method: "eth_requestAccounts",
       });
+
+      let windowProvider = new ethers.providers.Web3Provider(window.ethereum);
+      let Signer = windowProvider.getSigner();
       const obj = {
         status: "Connected",
         address: addressArray,
+        provider: Signer
       };
       return obj;
     } catch (err) {
@@ -21,8 +24,12 @@ export const connectWallet = async () => {
       };
     }
   } else {
-    return {
-      address: "",
+
+    let jsonRpcProvider = new ethers.providers.JsonRpcProvider(
+      "https://polygon-mumbai.g.alchemy.com/v2/pCiM9OJB_7EqE0lZ4Po19LqzoHkwlzVs"
+  )
+    let obj =  {
+      address: "N/A",
       status: (
         <span>
           <p>
@@ -35,7 +42,10 @@ export const connectWallet = async () => {
           </p>
         </span>
       ),
+      provider: jsonRpcProvider
     };
+
+    return obj;
   }
 };
 

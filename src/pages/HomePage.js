@@ -3,10 +3,10 @@ import '../css/HomePage.css';
 // import lessLogo from "../assets/LessLogo.png"
 import heroDesign from "../assets/HeroDesign.png"
 
-import eth_logo from '../assets/social-media-icons/protocols/x500/ethx500.png';
-import polygon_logo from '../assets/social-media-icons/protocols/x500/polygonx500.png';
-import arbitrum_logo from '../assets/social-media-icons/protocols/x500/Arbitrumx500.png';
-import optimism_logo from '../assets/social-media-icons/protocols/x500/optimismx500.png';
+// import eth_logo from '../assets/social-media-icons/protocols/x500/ethx500.png';
+// import polygon_logo from '../assets/social-media-icons/protocols/x500/polygonx500.png';
+// import arbitrum_logo from '../assets/social-media-icons/protocols/x500/Arbitrumx500.png';
+// import optimism_logo from '../assets/social-media-icons/protocols/x500/optimismx500.png';
 
 
 const HomeFront = () => {
@@ -15,7 +15,7 @@ const HomeFront = () => {
       <div className="Home-hero-title&logo">
         <h2 className='Home-title noselect'>Proof Of Less</h2>
 
-        <img src={heroDesign} className="Home-treePlant-image noselect" />
+        <img src={heroDesign} className="Home-treePlant-image noselect" alt=""/>
       </div>
 
       <div className="Home-lessismore">

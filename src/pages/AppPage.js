@@ -60,7 +60,7 @@ const AppPage = () => {
     // console.log('- generateView : destination + StateAppData ', destination, stateAppData + '+ accounts', accounts)
 
     return <>
-      <div className='AppPage-TopNav'><LayoutTop destination={destination} /></div> 
+      {/* <div className='AppPage-TopNav'><LayoutTop destination={destination} /></div>  */}
       <div className='AppPage-box-container'>
 
       <div className='AppPage-LeftNav'><LayoutLeft destination={destination} /> </div>

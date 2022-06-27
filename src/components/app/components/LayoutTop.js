@@ -5,6 +5,8 @@ import { AppDataStoreContext } from '../../../StoreAppData'
 // import { AppRouteStoreContext } from '../StoreAppRouter'
 
 import { connectWallet } from '../../../utils/functions/ConnectFunctions'
+// import { getCProvider } from '../../../utils/functions/getCProvider'
+
 import { isUser } from '../../../utils/functions/BackEnd/users/isUser'
 // import { getUserIdByUsername } from '../utils/functions/BackEnd/twitter/getUserIdByUsername'
 import { getUserInitialData } from '../../../utils/functions/BackEnd/twitter/getUserInitialData'
@@ -12,7 +14,7 @@ import { getUserInitialData } from '../../../utils/functions/BackEnd/twitter/get
 
 import CreateUserModal from "./CreateUserModal.js";
 
-const { ethers } = require("ethers");
+// const { ethers } = require("ethers");
 
 // Display differents scenes 
 
@@ -23,25 +25,17 @@ const AppLayoutTop = (destination, data) => {
 
   const isConnected = Boolean(stateAppData.userStatus === 'Connected');
 
-  // const actualChain = stateAppData.chainId;
-
-
-
-
-  // const generateUserData = (userAddress) => {
-  //   retrieveUserInformations(userAddress).then(res => {
-  //     let dDataAppData = res.response.data; 
-  //     dispatchAppData({ type: 'setAppData', dDataAppData}) })
-  //   console.log('db response to front: User infos', stateAppData)
-  // }
+  // const actualChain = stateAppData.chainId
 
   async function handleConnectClick() {
-    if (window.ethereum) {
-
-      const { address, status } = await connectWallet();
+    
+    try {
+      // console.log("Test provider EUUUH", getCProvider())
+      const { address, status, provider } = await connectWallet();
       let userAccounts = address
       let userAddress = address[0];
       let userStatus;
+      console.log("Test provider EUUUH", provider)
 
       if (userAddress === '0x12EC67660ebbb6dFf62378087FC69384D048b838') {
         userStatus = "Admin"
@@ -57,22 +51,20 @@ const AppLayoutTop = (destination, data) => {
         }
       );
 
-      const provider = new ethers.providers.Web3Provider(window.ethereum);
-      await provider.send("eth_requestAccounts", []);
-      // const signer = await provider.getSigner(userAddress);
+      // const provider = new ethers.providers.Web3Provider(window.ethereum);
+      // await provider.send("eth_requestAccounts", []);
 
 
-      const network = await provider.getNetwork();
-      // const networkId = network.chainId;
-      const chainId = network.name;
+      // const network = await provider.getNetwork();
+      // // const networkId = network.chainId;
+      // const chainId = network.name;
 
       await dispatchAppData(
         {
           type: 'setAppData',
           userAccounts,
           userStatus,
-          userAddress,
-          chainId
+          userAddress
         }
       );
       walletListenerAll();
@@ -87,6 +79,8 @@ const AppLayoutTop = (destination, data) => {
       }
 
 
+    } catch (e) {
+      console.log("Error Connection WEB3 :", e.message);
     }
   }
 
@@ -134,31 +128,31 @@ const AppLayoutTop = (destination, data) => {
 
       <div className="LayoutTop-topbox-right-box">
 
-          <div className="atrb-web3-buttonsConnect" id="AppBridge">
-            <button onClick={() => handleLoadTwitterData()}>LoadData</button>
+        <div className="atrb-web3-buttonsConnect" id="AppBridge">
+          <button onClick={() => handleLoadTwitterData()}>LoadData</button>
 
-            {/* <button>Bridge</button> */}
-          </div>
-          <div className="atrb-web3-buttons" id="AppChain">
-            {isConnected ? (
-              "Chain: " +
-              String(stateAppData.chainId)
-            ) : (
-              "Chain:" +
-              String(stateAppData.chainId)
-            )}
-          </div>
+          {/* <button>Bridge</button> */}
+        </div>
+        <div className="atrb-web3-buttons" id="AppChain">
+          {isConnected ? (
+            "Chain: " +
+            String(stateAppData.chainId)
+          ) : (
+            "Chain:" +
+            String(stateAppData.chainId)
+          )}
+        </div>
 
-          <div className="atrb-web3-buttonsConnect" id="AppWallet">
-            {isConnected ? (
-              "Connected: " +
-              String(stateAppData.userAddress).substring(0, 5) +
-              "..." +
-              String(stateAppData.userAddress).substring(39)
-            ) : (
-              <button onClick={() => handleConnectClick()}>Connect</button>
-            )}
-            {isOpen && <CreateUserModal setIsOpen={setIsOpen} />}
+        <div className="atrb-web3-buttonsConnect" id="AppWallet">
+          {isConnected ? (
+            "Connected: " +
+            String(stateAppData.userAddress).substring(0, 5) +
+            "..." +
+            String(stateAppData.userAddress).substring(39)
+          ) : (
+            <button onClick={() => handleConnectClick()}>Connect</button>
+          )}
+          {isOpen && <CreateUserModal setIsOpen={setIsOpen} />}
 
 
 

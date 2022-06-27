@@ -2,14 +2,15 @@ import '../../../css/app/Exchange.css'
 
 import {ethers} from 'ethers';
 
-import { darkTheme, lightTheme, SwapWidget } from '@uniswap/widgets/dist/index.js'
+import { lightTheme, SwapWidget } from '@uniswap/widgets/dist/index.js'
 import '@uniswap/widgets/dist/fonts.css'
+import { getCProvider } from '../../../utils/functions/getCProvider';
 
 // import { provider } from 'web3'
 
-const jsonRpcEndPoint = process.env.REACT_APP_MATIC_API_KEY
+const jsonRpcEndPoint = "https://polygon-mumbai.g.alchemy.com/v2/pCiM9OJB_7EqE0lZ4Po19LqzoHkwlzVs"
 
-const provider = new ethers.providers.Web3Provider(window.ethereum);
+const provider = getCProvider()
 
 const AppExchange = () => {
   return (
