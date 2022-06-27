@@ -10,7 +10,7 @@ import { getCProvider } from '../../../utils/functions/getCProvider';
 
 const jsonRpcEndPoint = "https://polygon-mumbai.g.alchemy.com/v2/pCiM9OJB_7EqE0lZ4Po19LqzoHkwlzVs"
 
-const provider = getCProvider()
+const {provider} = getCProvider()
 
 const AppExchange = () => {
   return (
