@@ -11,20 +11,20 @@ import heroDesign from "../assets/HeroDesign.png"
 
 const HomeFront = () => {
   return (
-    <div className="Home-general-container">
+    <div className="Home-general-container noselect">
       <div className="Home-hero-title&logo">
-        <h2 className='Home-title noselect'>Proof Of Less</h2>
+        <h2 className='Home-title'>Proof Of Less</h2>
 
-        <img src={heroDesign} className="Home-treePlant-image noselect" alt=""/>
+        <img src={heroDesign} className="Home-treePlant-image" alt=""/>
       </div>
 
       <div className="Home-lessismore">
-        <p className='noselect'>Less is more. Earn rewards for doing less TWEETING</p>
+        <p>Less is more. Earn rewards for doing less TWEETING</p>
       </div>
 
       <div className="Home-buttons-app">
-        <a href="/app"><button className='hba noselect'>Go to App</button></a>
-        <a href="/community"><button className='hba noselect'>Go to Docs</button></a>
+        <a href="/app"><button className='hba'>Go to App</button></a>
+        <a href="/community"><button className='hba'>Go to Docs</button></a>
       </div>
 
 

@@ -1,0 +1,39 @@
+.Quests-box-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    gap: 30px;
+}
+.Quests-hero-design{}
+
+.QuestsHero{}
+
+.Quests-nav-buttons-container{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.QuestsNavButtons{}
+
+.Quests-Container-Title{}
+.Quests-users-stats-container{
+  display: flex;
+  align-self: center;
+  width: 80%;
+
+  gap: 20px;
+}
+.Quests-users-stats-bg{
+  background-color: #F4EEE9;
+  height: 200px;
+  width: 50%;
+}
+
+.Quests-users-list-container{
+  background-color: #F4EEE9;
+  width: 80%;
+  height: 500px;
+
+}

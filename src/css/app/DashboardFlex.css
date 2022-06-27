@@ -1,7 +1,8 @@
 .Dashboard-box-container {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+
+  align-items: center;
   text-align: center;
   gap: 30px;
 
@@ -21,6 +22,7 @@
 .Dashboard-globalStats-Stats {
   display: flex;
   justify-content: center;
+  
   gap: 50px;
 }
 
@@ -31,7 +33,7 @@
 .Dashboard-MultiBoxContainer {
   background-color: #F4EEE9;
   border-radius: 30px;
-  /* width: 80%; */
+  width: 80%;
 
 }
 
