@@ -1,0 +1,17 @@
+.exchange-gridContainer{
+
+  
+    display: grid;  
+    justify-content: center;
+    align-content: center;
+  height: 100vh;
+  margin-top: -150px;
+    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
+  }
+  
+  
+  .community-box-wrapper{
+    margin-left: 250px;
+    color: white;
+  
+  }

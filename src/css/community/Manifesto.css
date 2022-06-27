@@ -1,0 +1,22 @@
+.Manifesto-box-container{
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    width: 100%;
+}
+
+.Manifesto-text-container{
+    width: 80%;
+}
+
+.Manifesto-Title{
+    font-size: 38px;
+}
+
+.Manifesto-FirstTitle{
+    margin-top: 100px;
+}
+
+.Manifesto-Texte{
+    margin-top: 50px;
+}

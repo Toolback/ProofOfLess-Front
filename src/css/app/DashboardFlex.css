@@ -1,0 +1,102 @@
+.Dashboard-box-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  gap: 30px;
+
+
+}
+
+
+
+/* ----------------------------------- */
+
+.Dashboard-globalStats-container {}
+
+.Dashboard-globalStats-Title {
+
+}
+
+.Dashboard-globalStats-Stats {
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.Dashboard-globalStats-statUnit {}
+
+/* ----------------------------------- */
+
+.Dashboard-MultiBoxContainer {
+  background-color: #F4EEE9;
+  border-radius: 30px;
+  /* width: 80%; */
+
+}
+
+/* ----------------------------------- */
+
+
+.Dashboard-profil-container {}
+
+.Dashboard-profil-Title{}
+
+.Dashboard-profil-InfosContainer{
+  display: flex;
+  justify-content: center;
+}
+
+.Dashboard-profil-InfosContainer-left{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+}
+
+.Dashboard-profil-InfosContainer-left-top{}
+
+.avatar-persona{
+  max-height: 300px;
+}
+
+.Dashboard-profil-InfosContainer-left-bottom{
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+}
+
+.Dashboard-profil-InfosContainer-left-bottom-left{}
+
+.Dashboard-profil-InfosContainer-left-bottom-right{}
+
+/* -- */
+.Dashboard-profil-InfosContainer-right{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  width: 50%;
+}
+
+.Dashboard-profil-InfosContainer-right-bottom{
+  display: flex;
+  justify-content: center;
+  gap: 50px;
+
+}
+
+
+.Dashboard-profil-InfosContainer-right-bottom-left{}
+
+.Dashboard-profil-InfosContainer-right-bottom-right{}
+
+
+
+/* ----------------------------------- */
+
+.Dashboard-earnings-container {}
+
+
+/* ----------------------------------- */
+
+.Dashboard-stats-container {}

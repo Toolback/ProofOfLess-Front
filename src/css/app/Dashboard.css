@@ -1,0 +1,130 @@
+.dashboard-gridContainer{
+    width: 100%;
+  
+    display: grid;
+    grid-template-columns: repeat(6,minmax( 1fr));
+    grid-auto-rows: minmax(100px, auto);
+    gap: 30px;
+
+    float: right;
+    /* overflow: hidden; */
+    text-align: center;
+    
+    background-color: #EDE7E2;
+  
+  }
+  
+  .dashboard-gridItemContainer{
+    grid-column: -1 / 1;
+    color: #32292F;
+  
+    display: grid;
+    /* gap: 50px; */
+  
+    
+  }
+  
+  .dashboard-gridItemContainer-background{
+    border-radius: 10px;
+    background-color: #F4EEE9;
+  
+    margin-left: 50px;
+    margin-right: 50px;
+    grid-column: -1 / 1;
+  }
+  
+  /* ------------------------------------ */
+  
+
+  
+  /* ------------------------------------ */
+  
+  .dashboard-gridItemContainer2{
+    grid-row: span 1;
+  }
+  
+  .dashboard-hero-gridItem1{}
+  
+  .dashboard-hero-gridItem2{
+    display: flex;
+    justify-content: center;
+    gap:20px;
+  }
+  
+  
+  /* ------------------------------------ */
+  
+  .dashboard-gridItemContainer3{
+    grid-row: span 3;
+  }
+  
+  .dashboard-profil-gridItem1{}
+  
+  .dashboard-profil-gridItem2{
+    display: flex;
+  }
+  
+  .dashboard-profil-gridItem2-left{
+    height: 100%;
+    width: 50%;
+  
+  }
+  
+  .dashboard-profil-gridItem2-left-top{
+    width: 100%;
+    height: 50%;
+  }
+  
+  .avatar-persona{
+    height: 100px;
+    border-radius: 25px;
+    float: left;
+    margin-left: 20px;
+  }
+  
+  .dashboard-profil-gridItem2-left-bottom{
+    margin-top: 50px;
+    width: 100%;
+    height: 50%;
+  }
+  
+  .dashboard-profil-gridItem2-right{
+    height: 100%;
+    width: 50%;
+  }
+  
+  /* ------------------------------------ */
+  .dashboard-gridItemContainer4{
+    grid-row: span 5;
+  }
+  
+  /* ------------------------------------ */
+  
+  .dashboard-gridItemContainer5{
+    grid-row: span 5;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    /* grid-auto-rows: minmax(1fr, auto); */
+  }
+  
+  .dashboard-statistics-card1{
+    border-radius: 10px;
+    background-color: #F4EEE9;
+    float: left;
+  }
+  
+  .dashboard-statistics-card1-text{
+    margin-top: 20px;
+  }
+  
+  
+  /* ------------------------------------ */
+  
+  .dashboard-gridItemContainer6{
+  }
+  
+  
+  
+  
+  
+  

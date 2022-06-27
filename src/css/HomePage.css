@@ -1,0 +1,89 @@
+.Home-general-container {
+     display: flex;
+     flex-direction: column;
+     height: 100vh;
+
+     text-align: center;
+     justify-content: center;
+     align-items: center;
+     background-color: #EDE7E2;
+     color: #32292F;
+ }
+
+.Home-title {
+     padding-bottom: 30px;
+     font-size: 32px;
+ }
+
+.Home-treePlant-image {
+     height: 400px;
+     width: 400px;
+     background-repeat: no-repeat;
+}
+
+.Home-lessismore{
+    margin-top: 20px;
+    font-size: 16px;
+    font-weight: 300;
+}
+
+.Home-buttons-app {
+     margin-top: 40px;
+ }
+
+.hba {
+
+     margin-left: 10px;
+     margin-right: 10px;
+
+ }
+
+.Home-statsDetails {
+     margin-top: 30px;
+     font-size: 12px;
+     display: flex;
+     justify-content: center;
+     align-items: center;
+     text-align: center;
+     /* padding: 100px; */
+     gap: 20px;
+
+
+ }
+
+.Home-stats-container {
+     border-right: 0.1rem solid;
+     border-color: black;
+ }
+
+.hsd-bold {
+     font-size: 1.5rem;
+ }
+
+.hsd-t {
+     font-size: 1.1rem;
+ }
+
+.Home-chains {
+     margin-top: 30px;
+     display: flex;
+     justify-content: center;
+     height: 40px;
+     gap: 20px
+ }
+
+.Home-chains-container {
+     padding: 0px 5px;
+     border-radius: 10px;
+
+ }
+
+.Home-chains-logo {
+     height: 40px;
+
+ }
+
+.Home-chains-eth {
+     border: 1px solid;
+     border-color: aliceblue
+ }

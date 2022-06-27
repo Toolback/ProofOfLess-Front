@@ -1,0 +1,15 @@
+.AppPage-box-container{
+display: flex;
+}
+.AppPage-TopNav{
+    height: 100px;
+}
+.AppPage-LeftNav{
+    
+    width: 20%;
+max-width: 250px;
+min-width: 250px;
+}
+.AppPage-Content{
+    width: 100%;
+}
