@@ -1,3 +1,16 @@
-# 🗃 NFT Minter Tutorial Starter Files
+#  [WIP] Proof Of Less Front End 
 
-This project contains the starter files for [Alchemy's NFT Minter tutorial](https://docs.alchemyapi.io/alchemy/tutorials/nft-minter), in which we teach you how to connect your smart contract to your React dApp project by building an NFT Minter using Metamask and Web3.
+# 🪜 Installation
+To use this app locally, you'll need to do the following:
+
+# CMD (Run Local Polygon Fork Testing)
+run thes command into the project file directory
+- `npm install`
+- `npm run start`
+  
+
+# ✨ TODO ✨: 
+- []
+
+# USER FLOW : 
+1 / 
