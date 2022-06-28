@@ -1,6 +1,6 @@
-import {useState} from "react";
+import { useState } from "react";
 // import { RiCloseLine } from "react-icons/ri";
-// import "./CreateUserModal.css"
+import "../../../css/app/CreateUserModal.css"
 
 import { createUser } from '../../../utils/functions/app/createUser'
 
@@ -18,29 +18,29 @@ const CreateUserModal = ({ setIsOpen }) => {
   }
   return (
     <>
-      <div className= "darkBG"  />
-      <div className= "centered">
-        <div className= "modal">
-          <div className= "modalHeader">
-            <h5 className= "heading">Eyh, never seen you around before ?</h5>
+      <div className="darkBG" />
+      <div className="centered">
+        <div className="modal">
+          <div className="modalHeader">
+            <h5 className="heading">Eyh, never seen you around before ?</h5>
           </div>
-          <button className= "closeBtn" onClick={() => setIsOpen(false)}>
+          <button className="closeBtn" onClick={() => setIsOpen(false)}>
             {/* <RiCloseLine style={{ marginBottom: "-3px" }} /> */}
           </button>
-          <div className= "modalContent">
+          <div className="modalContent">
             <p> Lets get started ! </p>
             <input type='text' onChange={e => setName(e.target.value)} value={name} />
             <input type='text' onChange={e => setEmail(e.target.value)} value={email} />
             <input type='text' onChange={e => setTwitterUsername(e.target.value)} value={twitterUsername} />
 
           </div>
-          <div className= "modalActions">
-            <div className= "actionsContainer">
-              <button className= "deleteBtn" onClick={() => handleCreateUser()}>
+          <div className="modalActions">
+            <div className="actionsContainer">
+              <button className="deleteBtn" onClick={() => handleCreateUser()}>
                 Join
               </button>
               <button
-                className= "cancelBtn"
+                className="cancelBtn"
                 onClick={() => setIsOpen(false)}
               >
                 Cancel

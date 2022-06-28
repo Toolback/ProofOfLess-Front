@@ -14,7 +14,7 @@ import { getUserInitialData } from '../../../utils/functions/BackEnd/twitter/get
 
 import CreateUserModal from "./CreateUserModal.js";
 
-// const { ethers } = require("ethers");
+import { ethers } from "ethers";
 
 // Display differents scenes 
 
@@ -31,11 +31,14 @@ const AppLayoutTop = (destination, data) => {
     
     try {
       // console.log("Test provider EUUUH", getCProvider())
-      const { address, status, provider } = await connectWallet();
+      const { address, status, provider, chainId} = await connectWallet();
       let userAccounts = address
       let userAddress = address[0];
       let userStatus;
-      console.log("Test provider EUUUH", provider)
+
+      // const providerD = new ethers.providers.Web3Provider(window.ethereum);
+      // await providerD.send("eth_requestAccounts", []);
+      console.log("Test provider EUUUH",  provider.provider._network.name)
 
       if (userAddress === '0x12EC67660ebbb6dFf62378087FC69384D048b838') {
         userStatus = "Admin"
@@ -47,40 +50,23 @@ const AppLayoutTop = (destination, data) => {
           type: 'setAppData',
           userAccounts,
           userStatus,
-          userAddress
+          userAddress,
+          chainId 
+
         }
       );
 
-      // const provider = new ethers.providers.Web3Provider(window.ethereum);
-      // await provider.send("eth_requestAccounts", []);
-
-
-      // const network = await provider.getNetwork();
-      // // const networkId = network.chainId;
-      // const chainId = network.name;
-
-      await dispatchAppData(
-        {
-          type: 'setAppData',
-          userAccounts,
-          userStatus,
-          userAddress
-        }
-      );
       walletListenerAll();
-      // console.log(" AppLayout Top : handleConnectClick() : Final stateAppData Result After Connect ?! : ", stateAppData, stateAppData.userAddress)
-
-      const userDb = await isUser(userAddress);
 
 
       // Create New User Table if address doesn't exist in DB
-      if (userDb.user[0] === undefined) {
+      // const userDb = await isUser(userAddress);
+      // if (userDb.user[0] === undefined) {
         setIsOpen(true)
-      }
-
-
+      // }
     } catch (e) {
       console.log("Error Connection WEB3 :", e.message);
+      return e.message
     }
   }
 
@@ -96,7 +82,7 @@ const AppLayoutTop = (destination, data) => {
               userAddress
             }
           )
-          console.log(" - walletListenerAll : stateAppData.accounts After Dispatch", stateAppData.accounts)
+          console.log(" - walletListenerAll() : stateAppData.accounts After Dispatch", stateAppData.userAddress)
         }
       })
 
@@ -104,7 +90,7 @@ const AppLayoutTop = (destination, data) => {
         let chainId = parseInt(_chainId)
         if (chainId > 0) {
           dispatchAppData({ type: 'setAppData', chainId })
-          console.log(" - walletListenerAll : stateAppData.chainId After Dispatch", chainId, stateAppData.chainId)
+          console.log(" - walletListenerAll() : stateAppData.chainId After Dispatch", chainId, stateAppData.chainId)
 
         }
       })
@@ -133,22 +119,19 @@ const AppLayoutTop = (destination, data) => {
 
           {/* <button>Bridge</button> */}
         </div>
-        <div className="atrb-web3-buttons" id="AppChain">
-          {isConnected ? (
-            "Chain: " +
-            String(stateAppData.chainId)
-          ) : (
-            "Chain:" +
-            String(stateAppData.chainId)
-          )}
+        <div className="atrb-web3-buttonsConnect" id="AppChain">
+          {isConnected ? <button>Chain : ${stateAppData.chainId}</button> : 
+          <button>Chain :</button>}
+          
         </div>
 
         <div className="atrb-web3-buttonsConnect" id="AppWallet">
           {isConnected ? (
-            "Connected: " +
-            String(stateAppData.userAddress).substring(0, 5) +
+            <button>
+            {String(stateAppData.userAddress).substring(0, 5) +
             "..." +
-            String(stateAppData.userAddress).substring(39)
+              String(stateAppData.userAddress).substring(39)}
+              </button>
           ) : (
             <button onClick={() => handleConnectClick()}>Connect</button>
           )}

@@ -5,16 +5,15 @@ import { ethers } from "ethers";
 export const connectWallet = async () => {
   if (typeof window !== "undefined" && typeof window.ethereum !== "undefined") {
     try {
-      const addressArray = await window.ethereum.request({
-        method: "eth_requestAccounts",
-      });
-
       let windowProvider = new ethers.providers.Web3Provider(window.ethereum);
-      let Signer = windowProvider.getSigner();
+      let addressArray = await windowProvider.send("eth_requestAccounts", []);
+      let provider = await windowProvider.getSigner(addressArray[0]);
+      let network = await windowProvider.getNetwork();
       const obj = {
         status: "Connected",
         address: addressArray,
-        provider: Signer
+        provider: provider,
+        chainId: network.name
       };
       return obj;
     } catch (err) {
@@ -23,8 +22,8 @@ export const connectWallet = async () => {
         status: "😥 " + err.message,
       };
     }
-  } else {
 
+  } else {
     let jsonRpcProvider = new ethers.providers.JsonRpcProvider(
       "https://polygon-mumbai.g.alchemy.com/v2/pCiM9OJB_7EqE0lZ4Po19LqzoHkwlzVs"
   )
