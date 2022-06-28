@@ -51,6 +51,9 @@ const AppPage = () => {
       case 'admin':
         return generateView(destination)
     
+        case 'nftminter':
+        return generateView(destination)
+      
       default:
         break;
     }

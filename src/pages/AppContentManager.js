@@ -12,6 +12,8 @@ import Earnings from '../components/app/pages/Earnings'
 import Dao from '../components/app/pages/Dao'
 import Exchange from '../components/app/pages/Exchange'
 import Admin from '../components/app/pages/Admin'
+import NftMinter from '../components/app/pages/NftMinter'
+
 
 
 
@@ -40,6 +42,9 @@ const AppViewManager = ({ destination, data }) => {
 
       case 'admin':
         return <Admin data={data} />
+      
+        case 'nftminter':
+          return <NftMinter data={data} />
 
 
       default:

@@ -1,0 +1,16 @@
+.NftMinter-box-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.NftMinter-minter-container{
+    background-color: #F4EEE9;
+    width: 60%;
+}
+
+.NftMinter-minter-button{
+    margin: 20px;
+}
