@@ -10,7 +10,7 @@ const NftMinter = () => {
                 <h2>MemberShip Pass</h2>
                 <p>This Nft will give you access to Proof Of Less Protocol</p>
                 <p>Allowing you to access Quests and Dao !</p>
-                <p>(If you don't have access, join the waiting list <a href="/app">here</a>)</p>
+                <p>(Mint restricted ? Join the waiting list <a href="/app">here</a>) 📃</p>
 
                 <button className='NftMinter-minter-button'>Mint</button>
             </div>
