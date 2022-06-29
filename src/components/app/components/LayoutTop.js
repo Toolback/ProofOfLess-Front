@@ -23,7 +23,7 @@ const AppLayoutTop = (destination, data) => {
   const { stateAppData, dispatchAppData } = useContext(AppDataStoreContext)
   const [isOpen, setIsOpen] = useState(false);
 
-  const isConnected = Boolean(stateAppData.userStatus === 'Connected');
+  const isConnected = Boolean(stateAppData.userStatus === ('Connected' && 'Admin'));
 
   // const actualChain = stateAppData.chainId
 
@@ -38,9 +38,8 @@ const AppLayoutTop = (destination, data) => {
 
       // const providerD = new ethers.providers.Web3Provider(window.ethereum);
       // await providerD.send("eth_requestAccounts", []);
-      console.log("Test provider EUUUH",  provider.provider._network.name)
 
-      if (userAddress === '0x12EC67660ebbb6dFf62378087FC69384D048b838') {
+      if (userAddress === '0x12ec67660ebbb6dff62378087fc69384d048b838') {
         userStatus = "Admin"
       } else {
         userStatus = status;
@@ -59,10 +58,10 @@ const AppLayoutTop = (destination, data) => {
       walletListenerAll();
 
 
-      // Create New User Table if address doesn't exist in DB
+      // // Create New User Table if address doesn't exist in DB
       // const userDb = await isUser(userAddress);
       // if (userDb.user[0] === undefined) {
-        setIsOpen(true)
+      //   setIsOpen(true)
       // }
     } catch (e) {
       console.log("Error Connection WEB3 :", e.message);
@@ -82,7 +81,7 @@ const AppLayoutTop = (destination, data) => {
               userAddress
             }
           )
-          console.log(" - walletListenerAll() : stateAppData.accounts After Dispatch", stateAppData.userAddress)
+          // console.log(" - walletListenerAll() : stateAppData.accounts After Dispatch", stateAppData.userAddress)
         }
       })
 
@@ -90,7 +89,7 @@ const AppLayoutTop = (destination, data) => {
         let chainId = parseInt(_chainId)
         if (chainId > 0) {
           dispatchAppData({ type: 'setAppData', chainId })
-          console.log(" - walletListenerAll() : stateAppData.chainId After Dispatch", chainId, stateAppData.chainId)
+          // console.log(" - walletListenerAll() : stateAppData.chainId After Dispatch", chainId, stateAppData.chainId)
 
         }
       })
@@ -103,13 +102,13 @@ const AppLayoutTop = (destination, data) => {
 
     const updateData = await getUserInitialData(stateAppData.userAddress);
 
-    console.log("... /! : FINAL Results HERE", updateData);
+    // console.log("... /! : FINAL Results HERE", updateData);
   }
 
   return (
     <div className="LayoutTop-box-container noselect">
       <div className="LayoutTop-topbox-left-box">
-        <h2 id="txt2">Proof Of Less</h2>
+        <a  className='txt2' href="/"><h2 className='txt2'>Proof Of Less</h2></a>
       </div>
 
       <div className="LayoutTop-topbox-right-box">
@@ -133,7 +132,7 @@ const AppLayoutTop = (destination, data) => {
               String(stateAppData.userAddress).substring(39)}
               </button>
           ) : (
-            <button onClick={() => handleConnectClick()}>Connect</button>
+            <button onClick={() => handleConnectClick()} id="atrb-web3-ConnectWallet">Connect</button>
           )}
           {isOpen && <CreateUserModal setIsOpen={setIsOpen} />}
 

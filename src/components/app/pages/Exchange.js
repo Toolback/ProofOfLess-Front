@@ -4,8 +4,8 @@ import {ethers} from 'ethers';
 
 import { lightTheme, SwapWidget } from '@uniswap/widgets/dist/index.js'
 import '@uniswap/widgets/dist/fonts.css'
-import { getCProvider } from '../../../utils/functions/getCProvider';
-
+// import { getCProvider } from '../../../utils/functions/getCProvider';
+// import cProvider from '../../../utils/functions/cProvider'
 // import { provider } from 'web3'
 
 

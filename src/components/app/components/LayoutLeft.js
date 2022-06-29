@@ -1,8 +1,10 @@
 import '../../../css/app/LayoutLeft.css'
-import { useContext } from 'react'
+import { useState, useContext, useEffect } from 'react'
 
 import { AppRouteStoreContext } from '../../../StoreAppRouter'
 import { AppDataStoreContext } from '../../../StoreAppData'
+
+import IMemberShipInstance from '../../../utils/interfaces/IMemberShipInstance';
 
 // import dashboardIcon from "../../../assets/DashboardIcon.png"
 
@@ -10,14 +12,16 @@ import { AppDataStoreContext } from '../../../StoreAppData'
 
 const AppLayoutLeft = (props) => {
   const { dispatchAppRoute } = useContext(AppRouteStoreContext);
-  const { stateAppData } = useContext(AppDataStoreContext)
-
-  const isAdmin = stateAppData.userAddress === toString('0x12EC67660ebbb6dFf62378087FC69384D048b838') ? true : false
-
+  const { stateAppData } = useContext(AppDataStoreContext);
 
   const handleNavClick = (paramRoute) => {
     let dDataAppRoute = paramRoute;
     return dispatchAppRoute({ type: 'setAppRoute', dDataAppRoute })
+  }
+
+  const retrieveRole = async () => {
+    let adminRole = await IMemberShipInstance.DEFAULT_ADMIN_ROLE();
+    let resp = await IMemberShipInstance.hasRole(adminRole, stateAppData.userAddress)
   }
   // Mayb rerender with useEffect after connexion to retrieve correct data ? 
   // console.log(" - AppLayoutLeft : User Address after Connexion : ", isAdmin, stateAppData.userAddress)
@@ -35,7 +39,7 @@ const AppLayoutLeft = (props) => {
 
         <div className="GameNavButton">Dao</div>
         <div className="GameNavButton" onClick={() => handleNavClick('exchange')}>Exchange</div>
-        {isAdmin ? (
+        {stateAppData.userStatus === "Admin" ? (
           <div className='GameNavButton' onClick={() => handleNavClick('admin')}>(Admin)</div>
         ) : (
           <div className='GameNavButton' onClick={() => handleNavClick('admin')}>(NotAdmin)</div>

@@ -3,9 +3,9 @@ display: flex;
 }
 .AppPage-TopNav{
     height: 100px;
+
 }
 .AppPage-LeftNav{
-    z-index: 2;
     width: 20%;
 max-width: 250px;
 min-width: 250px;

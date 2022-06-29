@@ -7,10 +7,33 @@
 }
 
 .NftMinter-minter-container{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
     background-color: #F4EEE9;
+    border-radius: 20px;
     width: 60%;
 }
 
+.NftMinter-minter-nft{
+    height: 300px;
+}
+
 .NftMinter-minter-button{
+    
     margin: 20px;
+}
+
+.NftMinter-minter-button:hover {
+    box-shadow: 0 10px 20px -10px rgba(61, 54, 54, 0.6);
+    transform: translateY(-5px);
+  }
+
+.NftMinter-minter-inputs{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    width: 60%;
+    gap: 20px;
 }

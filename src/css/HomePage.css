@@ -38,6 +38,12 @@
 
  }
 
+ .hba:hover {
+    box-shadow: 0 10px 20px -10px rgba(61, 54, 54, 0.6);
+    transform: translateY(-5px);
+  
+}
+
 .Home-statsDetails {
      margin-top: 30px;
      font-size: 12px;

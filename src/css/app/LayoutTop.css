@@ -1,5 +1,4 @@
 .LayoutTop-box-container {
-    margin: 0;
     display: flex;
     border-bottom: 1px solid;
     border-color: #4c505c;
@@ -7,17 +6,22 @@
     width: 100%;
     height: 60px;
     position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+
 
   
   
   }
   
-  #txt2{
+  .txt2{
     font-size: 20px;
     cursor: pointer;
     text-decoration: none;
     text-transform: none;
     font-style: none;
+    color: inherit;
   }
   
   .LayoutTop-topbox-left-box {
@@ -48,6 +52,10 @@
     border-radius: 11px;
     margin-left: 15px;
     
+  }
+  #atrb-web3-ConnectWallet:hover{
+    box-shadow: 0 10px 20px -10px rgba(61, 54, 54, 0.6);
+    transform: translateY(-5px);
   }
   
   #AppBridge{}
