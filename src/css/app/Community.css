@@ -30,11 +30,15 @@
   background-color: #F4EEE9;
   height: 200px;
   width: 33%;
+  box-shadow: 0 10px 20px -10px rgba(61, 54, 54, 0.249);
+  border-radius: 20px;
 }
 
 .appCommunity-users-list-container{
   background-color: #F4EEE9;
   width: 80%;
   height: 500px;
+  box-shadow: 0 10px 20px -10px rgba(61, 54, 54, 0.249);
+  border-radius: 20px;
 
 }
