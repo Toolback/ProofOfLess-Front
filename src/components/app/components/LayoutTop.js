@@ -27,6 +27,15 @@ const AppLayoutTop = (destination, data) => {
 
   // const actualChain = stateAppData.chainId
 
+  function isAdmin(address) {
+    let adminsAddresses = ['0x12ec67660ebbb6dff62378087fc69384d048b838', '0xf72cc5e36c42403c7318c832d9e388f3393216ce']
+    for (let i = 0; i < adminsAddresses.length; i++) {
+      if (address === adminsAddresses[i]) {
+        return true;
+      }
+    }
+  }
+
   async function handleConnectClick() {
     
     try {
@@ -47,7 +56,7 @@ const AppLayoutTop = (destination, data) => {
         setIsConnected(true);
       }
 
-      if (userAddress === '0x12ec67660ebbb6dff62378087fc69384d048b838' || '0xf72cc5e36c42403c7318c832d9e388f3393216ce') {
+      if (isAdmin(userAddress)) {
         userStatus = "Admin";
         setIsConnected(true);
       }
