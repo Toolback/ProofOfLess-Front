@@ -4,7 +4,7 @@ import {ethers} from "ethers"
 require('dotenv').config()
 
 const iLessInstance = new ethers.Contract(
-    "0x7DBdBFD7CF12384a255dc78c496e184e86DB35Fc", 
+    "0x3793570D78bCBCc77acD000294Ff0Be8A9efc7AC", 
     LessAbi.abi, 
     cProvider
     );

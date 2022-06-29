@@ -4,7 +4,7 @@ import {ethers} from "ethers"
 require('dotenv').config()
 
 const IMemberShipInstance = new ethers.Contract(
-    "0x0EEeDeF115e5698436293caDE89Bc215374e3C88", 
+    "0x598A473B4dA4153e67F32af358c7D6F88f855511", 
     MbAbi.abi, 
     cProvider
     );

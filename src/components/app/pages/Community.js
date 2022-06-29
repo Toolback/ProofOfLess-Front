@@ -1,8 +1,15 @@
 import React from 'react';
 import "../../../css/app/Community.css"
 import CommunityIcon2 from "../../../assets/CommunityIcon.png"
-
+import IMemberShipInstance from '../../../utils/interfaces/IMemberShipInstance';
 const Community = () => {
+
+    const retrieveMembersAddresses = async () => {
+        const retrievedAddresses = await IMemberShipInstance.retrieveMembersAddress();
+        console.log("MembersAddresses Retrieved : ", retrievedAddresses);
+        return { retrievedAddresses };
+    }
+
     return (
         <div className='appCommunity-box-container noselect'>
 
@@ -27,6 +34,7 @@ const Community = () => {
 
             <div className="appCommunity-Container-Title">
                 <h3>List Of Users</h3>
+                {retrieveMembersAddresses()}
             </div>
 
             <div className="appCommunity-users-list-container  Community-gridItemContainer4">

@@ -44,12 +44,14 @@ const AppLayoutTop = (destination, data) => {
       let userAccounts = address
       let userAddress = address[0];
       let userStatus;
+      let isMember = false;
 
       // const providerD = new ethers.providers.Web3Provider(window.ethereum);
       // await providerD.send("eth_requestAccounts", []);
 
-      if (IMemberShipInstace.isOwner(userAddress)) {
+      if (await IMemberShipInstace.isOwner(userAddress)) {
         userStatus = "Member";
+        isMember = true;
         setIsConnected(true);
       } else {
         userStatus = status;
@@ -58,6 +60,7 @@ const AppLayoutTop = (destination, data) => {
 
       if (isAdmin(userAddress)) {
         userStatus = "Admin";
+        // isMember = true; Paused for Minter Page still accessible
         setIsConnected(true);
       }
 
@@ -68,12 +71,15 @@ const AppLayoutTop = (destination, data) => {
           userAccounts,
           userStatus,
           userAddress,
-          chainId 
+          chainId,
+          isMember
 
         }
         
       );
       console.log("userStatus: ", stateAppData.userStatus, userStatus, "Admin")
+      console.log("userisMember: ", stateAppData.isMember, isMember, "true")
+
 
       walletListenerAll();
 

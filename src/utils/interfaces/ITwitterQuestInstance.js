@@ -4,7 +4,7 @@ import {ethers} from "ethers"
 require('dotenv').config()
 
 const ITwitterQuestInstance = new ethers.Contract(
-    "0xAb0fD4623404930B352aA52E200Cc67B6fDD77EE", 
+    "0xbb7c8f4C8408AdC1259113019B4a773B2CB178F3", 
     TqAbi.abi, 
     cProvider
     );
