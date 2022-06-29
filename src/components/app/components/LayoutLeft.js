@@ -39,8 +39,10 @@ const AppLayoutLeft = (props) => {
 
         <div className="GameNavButton">Dao</div>
         <div className="GameNavButton" onClick={() => handleNavClick('exchange')}>Exchange</div>
-        {stateAppData.userStatus === "Admin" ? (
+        {stateAppData.userStatus === "Admin" ? (<>
           <div className='GameNavButton' onClick={() => handleNavClick('admin')}>(Admin)</div>
+          <div className="GameNavButton" onClick={() => handleNavClick('nftminter')}>(Nft Minter Page)</div>
+          </>
         ): (<></>)}
         <div className="GameNavButton" onClick={() => handleNavClick('nftminter')}>(Nft Minter Page)</div>
 
