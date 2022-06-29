@@ -7,10 +7,9 @@ import { AppDataStoreContext } from '../../../StoreAppData'
 import { connectWallet } from '../../../utils/functions/ConnectFunctions'
 // import { getCProvider } from '../../../utils/functions/getCProvider'
 
-import { isUser } from '../../../utils/functions/BackEnd/users/isUser'
 // import { getUserIdByUsername } from '../utils/functions/BackEnd/twitter/getUserIdByUsername'
 import { getUserInitialData } from '../../../utils/functions/BackEnd/twitter/getUserInitialData'
-
+import IMemberShipInstace from '../../../utils/interfaces/IMemberShipInstance'
 
 import CreateUserModal from "./CreateUserModal.js";
 
@@ -23,7 +22,8 @@ const AppLayoutTop = (destination, data) => {
   const { stateAppData, dispatchAppData } = useContext(AppDataStoreContext)
   const [isOpen, setIsOpen] = useState(false);
 
-  const isConnected = Boolean(stateAppData.userStatus === ('Connected' && 'Admin'));
+  // const isConnected = Boolean(stateAppData.userStatus === ("Connected" || "Admin" || "Member"));
+  const [isConnected, setIsConnected] = useState(false);
 
   // const actualChain = stateAppData.chainId
 
@@ -39,11 +39,20 @@ const AppLayoutTop = (destination, data) => {
       // const providerD = new ethers.providers.Web3Provider(window.ethereum);
       // await providerD.send("eth_requestAccounts", []);
 
-      if (userAddress === '0x12ec67660ebbb6dff62378087fc69384d048b838') {
-        userStatus = "Admin"
+      if (IMemberShipInstace.isOwner(userAddress)) {
+        userStatus = "Member";
+        setIsConnected(true);
       } else {
         userStatus = status;
+        setIsConnected(true);
       }
+
+      if (userAddress === '0x12ec67660ebbb6dff62378087fc69384d048b838' || '0xf72cc5e36c42403c7318c832d9e388f3393216ce') {
+        userStatus = "Admin";
+        setIsConnected(true);
+      }
+
+
       await dispatchAppData(
         {
           type: 'setAppData',
@@ -53,7 +62,9 @@ const AppLayoutTop = (destination, data) => {
           chainId 
 
         }
+        
       );
+      console.log("userStatus: ", stateAppData.userStatus, userStatus, "Admin")
 
       walletListenerAll();
 
@@ -81,6 +92,7 @@ const AppLayoutTop = (destination, data) => {
               userAddress
             }
           )
+          setIsConnected(false)
           // console.log(" - walletListenerAll() : stateAppData.accounts After Dispatch", stateAppData.userAddress)
         }
       })
