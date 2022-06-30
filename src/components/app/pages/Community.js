@@ -31,11 +31,14 @@ const Community = () => {
         setInitialMembers(res)
         await dispatchAppData(
             {
+                
                 type: 'setAppData',
+                ...stateAppData,
                 listMembersAddress,
 
             }
         )
+
     })
     console.log("Community : retrieveMembersInfos() WhileEnd: ", initialMembers)
 

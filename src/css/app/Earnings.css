@@ -43,3 +43,12 @@
   border-radius: 20px;
 
 }
+
+.ConnectToRetrieve-box-container{
+  background-color: #F4EEE9;
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  width: 30%;
+  border-radius: 10px;
+}

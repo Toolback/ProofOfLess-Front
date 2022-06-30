@@ -10,7 +10,7 @@ import { connectWallet } from '../../../utils/functions/ConnectFunctions'
 // import { getUserIdByUsername } from '../utils/functions/BackEnd/twitter/getUserIdByUsername'
 import { getUserInitialData } from '../../../utils/functions/BackEnd/twitter/getUserInitialData'
 import IMemberShipInstace from '../../../utils/interfaces/IMemberShipInstance'
-
+import ITwitterQuestInstance from '../../../utils/interfaces/ITwitterQuestInstance'
 import CreateUserModal from "./CreateUserModal.js";
 
 import { ethers } from "ethers";
@@ -47,8 +47,9 @@ const AppLayoutTop = (destination, data) => {
 
       // const providerD = new ethers.providers.Web3Provider(window.ethereum);
       // await providerD.send("eth_requestAccounts", []);
+      let memberStatus = await IMemberShipInstace.isOwner(userAddress)
 
-      if (await IMemberShipInstace.isOwner(userAddress)) {
+      if (memberStatus) {
         userStatus = "Member";
         isMember = true;
         setIsConnected(true);
@@ -63,6 +64,11 @@ const AppLayoutTop = (destination, data) => {
         setIsConnected(true);
       }
 
+      let inTwitterWaitingList = await ITwitterQuestInstance.waitingList(userAddress);
+      console.log("Waiting list", inTwitterWaitingList);
+      let isTwitterParticipant = await ITwitterQuestInstance.userTwitterData(userAddress)
+      console.log("User Twitter Quest Data", isTwitterParticipant[3].toString());
+
       // let resMembersAddress = await IMemberShipInstace.retrieveMembersAddress();
       // let listMembersAddress = await resMembersAddress
 
@@ -74,6 +80,7 @@ const AppLayoutTop = (destination, data) => {
           userAddress,
           chainId,
           isMember,
+          inTwitterWaitingList
 
         }
         
@@ -96,7 +103,7 @@ const AppLayoutTop = (destination, data) => {
       return e.message
     }
   }
-  console.log("results Members Address After Click Connect", stateAppData.listMembersAddress)
+  console.log("results Members Address After Click Connect", stateAppData.userAddress, stateAppData.listMembersAddress)
 
   function walletListenerAll() {
     if (window.ethereum) {
