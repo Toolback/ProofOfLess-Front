@@ -4,18 +4,14 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  gap: 30px;
+  gap: 10px;
 }
 
 .appCommunity-hero-design{}
 
 .appCommunityHero{}
 
-.appCommunity-nav-buttons-container{
-  display: flex;
-  justify-content: center;
-  gap: 20px;
-}
+
 .appCommunityNavButtons{}
 
 .appCommunity-Container-Title{}

@@ -111,14 +111,17 @@ const DashboardFlex = (props) => {
       </div>
 
       <div className="Dashboard-stats-container Dashboard-MultiBoxContainer">
-        <h3>Statistics</h3>
+        <h2>Quests Statistics</h2>
 
         <div className="Dashboard-statistics-card1">
           <div className="Dashboard-statistics-card1-text">
-            <h4>Personal Statistics</h4>
+            <h3>Twitter Quest</h3>
+            <h4>Your Objective :</h4>
           </div>
           <div className="Dashboard-persoStats-box-cards">
-            <h2>1k3 usdt</h2>
+            <h2>12 </h2>
+            <p>Tweets Per Week</p>
+            <p>Your Average Over 6 Months</p>
             <ResponsiveContainer width="90%" aspect={2}>
               <LineChart
                 width={500}
