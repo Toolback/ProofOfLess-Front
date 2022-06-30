@@ -11,6 +11,7 @@ export const initialAppDataState = {
     isAdmin: false,
     twitterUserName: 'connect to retrieve',
     chainId: '0',
+    listMembersAddress: [],
     listedERC721: [],
     unsoldItems: [],
     ownedTokens: []
@@ -33,6 +34,7 @@ export function reducer(state, action) {
                 isAdmin: action.isAdmin,
                 twitterUserName: action.twitterUserName,
                 chainId: action.chainId,
+                listMembersAddress: action.listMembersAddress,
                 listedERC721: action.listedERC721,
                 ownedTokens: action.ownedTokens
             };

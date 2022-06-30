@@ -38,7 +38,10 @@ const NftMinter = () => {
                 {stateAppData.isMember ? (
                     <p>Welcome Onboard ! ✅</p>
                 ) : (<>
-                    <p>(Mint restricted ? Join the waiting list <a href="/app">here</a>📝) </p>
+                        <p>(Mint restricted ? Join the waiting list <a href="/app">here</a>📝) </p>
+                        <p>(Connect to : <a href="https://chainlist.org/chain/80001">Mumbai Network</a></p>
+                        <p>(Free Matic here : <a href="https://faucet.polygon.technology/">Mumbai Faucet</a></p>
+
                     <div className="NftMinter-minter-inputs">
                     <input type='text' onChange={e => setUserName(e.target.value)} value={userName} />
                     <input type='text' onChange={e => setUserEmail(e.target.value)} value={userEmail} />

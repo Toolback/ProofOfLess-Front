@@ -39,7 +39,6 @@ const AppLayoutTop = (destination, data) => {
   async function handleConnectClick() {
     
     try {
-      // console.log("Test provider EUUUH", getCProvider())
       const { address, status, provider, chainId} = await connectWallet();
       let userAccounts = address
       let userAddress = address[0];
@@ -64,6 +63,8 @@ const AppLayoutTop = (destination, data) => {
         setIsConnected(true);
       }
 
+      // let resMembersAddress = await IMemberShipInstace.retrieveMembersAddress();
+      // let listMembersAddress = await resMembersAddress
 
       await dispatchAppData(
         {
@@ -72,13 +73,14 @@ const AppLayoutTop = (destination, data) => {
           userStatus,
           userAddress,
           chainId,
-          isMember
+          isMember,
 
         }
         
       );
-      console.log("userStatus: ", stateAppData.userStatus, userStatus, "Admin")
-      console.log("userisMember: ", stateAppData.isMember, isMember, "true")
+
+      // console.log("userStatus: ", stateAppData.userStatus, userStatus, "Admin")
+      // console.log("userisMember: ", stateAppData.isMember, isMember, "true")
 
 
       walletListenerAll();
@@ -94,6 +96,7 @@ const AppLayoutTop = (destination, data) => {
       return e.message
     }
   }
+  console.log("results Members Address After Click Connect", stateAppData.listMembersAddress)
 
   function walletListenerAll() {
     if (window.ethereum) {
