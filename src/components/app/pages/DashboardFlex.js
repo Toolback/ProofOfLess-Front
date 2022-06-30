@@ -40,25 +40,25 @@ const DashboardFlex = (props) => {
     <div className="Dashboard-box-container noselect">
 
 
-      <div className="Dashboard-globalStats-container ">
+      {/* <div className="Dashboard-globalStats-container ">
         <div className="Dashboard-globalStats-Title">
           <h2>Dashboard</h2>
         </div>
         <div className="Dashboard-globalStats-Stats">
           <div className="Dashboard-globalStats-statUnit">
+            <h2>1</h2>
+            <p>Available Quests</p>
+          </div>
+          <div className="Dashboard-globalStats-statUnit">
+            <h2>9</h2>
+            <p>Quests to Vote</p>
+          </div>
+          <div className="Dashboard-globalStats-statUnit">
             <h2>6</h2>
-            <p>Pending Challenge</p>
-          </div>
-          <div className="Dashboard-globalStats-statUnit">
-            <h2>32</h2>
-            <p>Quests to Approve</p>
-          </div>
-          <div className="Dashboard-globalStats-statUnit">
-            <h2>See More</h2>
-            <p>Wall Of Fame</p>
+            <p>Daily Check-ins</p>
           </div>
         </div>
-      </div>
+      </div> */}
 
       <div className="Dashboard-profil-container Dashboard-MultiBoxContainer">
         <div className="Dashboard-profil-Title">

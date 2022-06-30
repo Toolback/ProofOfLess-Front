@@ -33,10 +33,10 @@ const AppPage = () => {
       case 'initialize':
         return generateView(destination)
 
-        case 'community':
+        case 'dashboard':
           return generateView(destination)
       
-        case 'quests':
+        case 'community':
         return generateView(destination)
       
         case 'earnings':

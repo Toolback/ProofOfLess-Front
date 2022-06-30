@@ -6,26 +6,50 @@
     text-align: center;
     gap: 30px;
 }
-.Quests-hero-design{}
-
-.QuestsHero{}
-
-.Quests-nav-buttons-container{
+.Quests-hero-container{
   display: flex;
   justify-content: center;
-  gap: 20px;
+  width: 80%;
 }
-.QuestsNavButtons{}
 
-.Quests-Container-Title{}
-.Quests-users-stats-container{
+.Quests-hero-left{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 70%;
+
+}
+
+.Quests-hero-right{
+  width: 30%;
+}
+
+
+.QuestsHero-design{
+  height: 200px;
+}
+.QuestsHero-text1{
+  font-size: 20px;
+}
+.QuestsHero-text2{
+  font-size: 20px;
+  margin-bottom: 50px;
+}
+
+
+.Quests-users-handle-container{
   display: flex;
   align-self: center;
-  width: 80%;
+  width: 95%;
 
   gap: 20px;
 }
-.Quests-users-stats-bg{
+.Quests-users-handle-bg{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+
   background-color: #F4EEE9;
   height: 200px;
   width: 50%;
@@ -33,11 +57,21 @@
   border-radius: 20px;
 }
 
+.Quests-users-handle-bg-quest{
+
+  width: 85%;
+  height: 50px;
+  background-color: #EDE7E2;
+
+
+}
+
 .Quests-users-list-container{
   background-color: #F4EEE9;
-  width: 80%;
+  width: 95%;
   height: 500px;
   box-shadow: 0 10px 20px -10px rgba(61, 54, 54, 0.249);
   border-radius: 20px;
 
 }
+

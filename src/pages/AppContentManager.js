@@ -23,13 +23,13 @@ const AppViewManager = ({ destination, data }) => {
   const generateViewGames = () => {
     switch (destination) {
       case 'initialize':
-        return <Dashboard data={data} />
+        return <Quests data={data} />
       
         case 'community':
           return <Community data={data} />
 
-      case 'quests':
-        return <Quests data={data} />
+      case 'dashboard':
+        return <Dashboard data={data} />
       
         case 'earnings':
           return <Earnings data={data} />

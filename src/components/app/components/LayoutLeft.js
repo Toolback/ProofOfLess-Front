@@ -31,10 +31,9 @@ const AppLayoutLeft = (props) => {
 
 
       <div className="LayoutLeft-main-box">
-
-        <div className="GameNavButton" onClick={() => handleNavClick('initialize')}>Dashboard</div>
+        <div className="GameNavButton" onClick={() => handleNavClick('initialize')}>Quests</div>
+        <div className="GameNavButton" onClick={() => handleNavClick('dashboard')}>Dashboard</div>
         <div className="GameNavButton" onClick={() => handleNavClick('community')}>Community</div>
-        <div className="GameNavButton" onClick={() => handleNavClick('quests')}>Quests</div>
         <div className="GameNavButton" onClick={() => handleNavClick('earnings')}>Earnings</div>
 
         <div className="GameNavButton">Dao</div>

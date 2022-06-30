@@ -84,10 +84,10 @@ const Community = () => {
                 <img src={CommunityIcon2} alt="CommunityWork" className='appCommunityHero' />
             </div>
 
-            <div className="appCommunity-nav-buttons-container">
+            {/* <div className="appCommunity-nav-buttons-container">
                 <button className="appCommunityNavButtons">Users</button>
                 <button className="appCommunityNavButtons">Friends</button>
-            </div>
+            </div> */}
 
             {/* <div className="appCommunity-Container-Title">
                 <h3>Global Statistics</h3>
