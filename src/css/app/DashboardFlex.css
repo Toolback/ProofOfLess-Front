@@ -11,22 +11,6 @@
 
 
 
-/* ----------------------------------- */
-
-.Dashboard-globalStats-container {}
-
-.Dashboard-globalStats-Title {
-
-}
-
-.Dashboard-globalStats-Stats {
-  display: flex;
-  justify-content: center;
-  
-  gap: 50px;
-}
-
-.Dashboard-globalStats-statUnit {}
 
 /* ----------------------------------- */
 
@@ -44,33 +28,39 @@
 
 .Dashboard-profil-container {}
 
-.Dashboard-profil-Title{}
-
-.Dashboard-profil-InfosContainer{
-  display: flex;
-  justify-content: center;
-  /* gap: 20px; */
+.Dashboard-profil-Title{
+  margin-bottom: 50px;
 }
 
-.Dashboard-profil-InfosContainer-left{
+.Dashboard-profil-InfosContainer-top{
+  display: flex;
+  justify-content: space-evenly;
+}
+
+.Dashboard-profil-InfosContainer-left-top{
   display: flex;
   flex-direction: column;
   justify-content: center;
   width: 50%;
 }
 
-.Dashboard-profil-InfosContainer-left-top{}
-
 .avatar-persona{
   max-height: 300px;
 }
+
+.Dashboard-profil-InfosContainer-right-top{
+
+  width: 50%;
+}
+
+
 
 .Dashboard-profil-InfosContainer-left-bottom{
   display: flex;
   justify-content: center;
   text-align: left;
 
-  /* gap: 50px; */
+  gap: 50px;
 }
 
 .Dashboard-profil-InfosContainer-left-bottom-left{}
@@ -78,18 +68,23 @@
 .Dashboard-profil-InfosContainer-left-bottom-right{}
 
 /* -- */
+.Dashboard-profil-InfosContainer-bottom{
+  display: flex;
+  justify-content: center;
+  margin-bottom: 30px;
+}
 .Dashboard-profil-InfosContainer-right{
   display: flex;
   flex-direction: column;
   justify-content: center;
-  width: 50%;
+  width: 80%;
 }
 
 .Dashboard-profil-InfosContainer-right-bottom{
   display: flex;
   justify-content: center;
   text-align: left;
-  gap: 20px;
+  gap: 50px;
 
 }
 

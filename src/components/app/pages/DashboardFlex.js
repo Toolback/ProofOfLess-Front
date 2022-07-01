@@ -51,55 +51,41 @@ const DashboardFlex = (props) => {
     ) : (<>
       <div className="Dashboard-box-container noselect">
 
-
-        {/* <div className="Dashboard-globalStats-container ">
-        <div className="Dashboard-globalStats-Title">
-          <h2>Dashboard</h2>
-        </div>
-        <div className="Dashboard-globalStats-Stats">
-          <div className="Dashboard-globalStats-statUnit">
-            <h2>1</h2>
-            <p>Available Quests</p>
-          </div>
-          <div className="Dashboard-globalStats-statUnit">
-            <h2>9</h2>
-            <p>Quests to Vote</p>
-          </div>
-          <div className="Dashboard-globalStats-statUnit">
-            <h2>6</h2>
-            <p>Daily Check-ins</p>
-          </div>
-        </div>
-      </div> */}
         {isConnected ? (<>
 
           <div className="Dashboard-profil-container Dashboard-MultiBoxContainer">
             <div className="Dashboard-profil-Title">
               <h2>Profil</h2>
             </div>
-            <div className="Dashboard-profil-InfosContainer-left-top">
+            <div className="Dashboard-profil-InfosContainer-top">
+
+              <div className="Dashboard-profil-InfosContainer-left-top">
+              <h3>Verified Accounts </h3>
+                  <div className="Dashboard-profil-InfosContainer-left-bottom">
+
+                    <div className="Dashboard-profil-InfosContainer-left-bottom-left">
+                      <p>Name : DevleDev</p>
+                      <p>Email : Enter Email Here 📝</p>
+                      <p>Public Address : 0xDev</p>
+                      <p>Phone Number : Complete Verification 📝</p>
+                    </div>
+                    <div className="Dashboard-profil-InfosContainer-left-bottom-right">
+                      <p>Twitter : @DevleDev ✅</p>
+                      <p>Youtube: @DevleDev ✅</p>
+                      <p>Instagram: @DevleDev ✅</p>
+                    </div>
+                  </div>              </div>
+              <div className="Dashboard-profil-InfosContainer-right-top">
               <img src={avatarDonut} alt="userAvatar" className="avatar-persona" />
-            </div>
-            <div className="Dashboard-profil-InfosContainer">
-              <div className="Dashboard-profil-InfosContainer-left">
 
-                <h3>Verified Accounts </h3>
-                <div className="Dashboard-profil-InfosContainer-left-bottom">
-
-                  <div className="Dashboard-profil-InfosContainer-left-bottom-left">
-                    <p>Name : DevleDev</p>
-                    <p>Email : Enter Email Here 📝</p>
-                    <p>Public Address : 0xDev</p>
-                    <p>Phone Number : Complete Verification 📝</p>
-                  </div>
-                  <div className="Dashboard-profil-InfosContainer-left-bottom-right">
-                    <p>Twitter : @DevleDev ✅</p>
-                    <p>Youtube: @DevleDev ✅</p>
-                    <p>Instagram: @DevleDev ✅</p>
-                  </div>
-                </div>
+                 
 
               </div>
+            </div>
+
+
+            <div className="Dashboard-profil-InfosContainer-bottom">
+
               <div className="Dashboard-profil-InfosContainer-right">
                 <h3>Nft Statistics</h3>
                 <div className="Dashboard-profil-InfosContainer-right-bottom">
