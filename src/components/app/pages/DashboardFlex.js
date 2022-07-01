@@ -67,13 +67,15 @@ const DashboardFlex = (props) => {
                       <p>Name : DevleDev</p>
                       <p>Email : Enter Email Here 📝</p>
                       <p>Public Address : 0xDev</p>
-                      <p>Phone Number : Complete Verification 📝</p>
+                      <p>Twitter : @DevleDev ✅</p>
+
+                      {/* <p>Phone Number : Complete Verification 📝</p> */}
                     </div>
-                    <div className="Dashboard-profil-InfosContainer-left-bottom-right">
+                    {/* <div className="Dashboard-profil-InfosContainer-left-bottom-right">
                       <p>Twitter : @DevleDev ✅</p>
                       <p>Youtube: @DevleDev ✅</p>
                       <p>Instagram: @DevleDev ✅</p>
-                    </div>
+                    </div> */}
                   </div>              </div>
               <div className="Dashboard-profil-InfosContainer-right-top">
               <img src={avatarDonut} alt="userAvatar" className="avatar-persona" />
