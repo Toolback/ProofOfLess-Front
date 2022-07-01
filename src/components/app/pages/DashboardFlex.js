@@ -10,7 +10,7 @@ import NftMinter from "./NftMinter"
 const DashboardFlex = (props) => {
   const { stateAppData, dispatchAppData } = useContext(AppDataStoreContext)
   let userStatus = stateAppData.userStatus
-  const isConnected = Boolean(userStatus !== 'connect to retrieve' );
+  const isConnected = Boolean(userStatus !== 'connect to retrieve');
   const isNotMember = Boolean(userStatus == 'Connected')
 
   const data = [
@@ -90,12 +90,12 @@ const DashboardFlex = (props) => {
                     <p>Name : DevleDev</p>
                     <p>Email : Enter Email Here 📝</p>
                     <p>Public Address : 0xDev</p>
+                    <p>Phone Number : Complete Verification 📝</p>
                   </div>
                   <div className="Dashboard-profil-InfosContainer-left-bottom-right">
                     <p>Twitter : @DevleDev ✅</p>
                     <p>Youtube: @DevleDev ✅</p>
                     <p>Instagram: @DevleDev ✅</p>
-                    <p>Phone Number : Complete Verification 📝</p>
                   </div>
                 </div>
 
@@ -108,12 +108,17 @@ const DashboardFlex = (props) => {
                     <p>Experience : level 10</p>
                     <p>Quest Accepted: 56</p>
                     <p>Quest Completed: 32 </p>
-                    <p>Friend Challengend : 2 </p>
                   </div>
                   <div className="Dashboard-profil-InfosContainer-right-bottom-right">
                     <p>Dao Proposal Created : 3 </p>
                     <p>Dao Proposal Created Accepted: 1</p>
                     <p>Dao Proposal Voted: 102 </p>
+
+
+                  </div>
+                  <div className="Dashboard-profil-InfosContainer-right-bottom-right">
+                    <p>Friend Challengend : 2 </p>
+
                     <p>Challenge Received : 12 </p>
                     <p>Challenge Completed : 8 </p>
 

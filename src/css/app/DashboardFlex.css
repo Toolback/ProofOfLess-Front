@@ -33,7 +33,7 @@
 .Dashboard-MultiBoxContainer {
   background-color: #F4EEE9;
   border-radius: 30px;
-  width: 80%;
+  width: 95%;
   box-shadow: 0 10px 20px -10px rgba(61, 54, 54, 0.249);
 
 
@@ -49,6 +49,7 @@
 .Dashboard-profil-InfosContainer{
   display: flex;
   justify-content: center;
+  /* gap: 20px; */
 }
 
 .Dashboard-profil-InfosContainer-left{
@@ -67,7 +68,9 @@
 .Dashboard-profil-InfosContainer-left-bottom{
   display: flex;
   justify-content: center;
-  gap: 50px;
+  text-align: left;
+
+  /* gap: 50px; */
 }
 
 .Dashboard-profil-InfosContainer-left-bottom-left{}
@@ -85,7 +88,8 @@
 .Dashboard-profil-InfosContainer-right-bottom{
   display: flex;
   justify-content: center;
-  gap: 50px;
+  text-align: left;
+  gap: 20px;
 
 }
 
