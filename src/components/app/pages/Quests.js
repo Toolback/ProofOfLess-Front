@@ -5,6 +5,7 @@ import { AppDataStoreContext } from '../../../StoreAppData'
 import QuestsDesign from "../../../assets/QuestIcon.png"
 import ITwitterQuestInstance from '../../../utils/interfaces/ITwitterQuestInstance';
 import NftMinter from "./NftMinter"
+import twitterBird from "../../../assets/Twitter_Bird.svg"
 const Quests = () => {
     const { stateAppData, dispatchAppData } = useContext(AppDataStoreContext)
     let userStatus = stateAppData.userStatus
@@ -30,10 +31,42 @@ const Quests = () => {
             <>
                 {isInWaitingList ? (
                     <div className='Quests-renderJoinedQuests-box-container'>
-                        <h4>Twitter Quest</h4>
-                        <p>Date :</p>
-                        <p>Total Participants :</p>
-                        <button>Unsubscribe</button>
+                        <div className='Quests-renderJoinedQuests-top'>
+                            <div className='Quests-renderJoinedQuests-top-left'>
+                                <img src={twitterBird} className="Quests-TwitterBird" />
+                            </div>
+                            <div className='Quests-renderJoinedQuests-top-right'>
+                                <h4 className='Quests-renderJoinedQuests-top-right-title'>Tweet Less !</h4>
+                                <p className='Quests-renderJoinedQuests-top-right-text'>Focus on value, not quantity</p>
+                            </div>
+
+                        </div>
+
+                        <div className='Quests-renderJoinedQuests-bottom'>
+                            <div className='Quests-renderJoinedQuests-bottom-left'>
+
+                                <p>Start :1/07/2022</p>
+                                <p>End : 1/08/2022</p>
+                                <p>Total Pool Gain :</p>
+                                <p>1290 Dai</p>
+
+                            </div>
+                            <div className='Quests-renderJoinedQuests-bottom-right'>
+                                <p>Total Participants : 129</p>
+                                <p>Total Waiting List : 146</p>
+                                <p>Participe : ❌</p>
+                                <p>Waiting List : ✔</p>
+
+                            </div>
+
+                        </div>
+
+                        <div className='Quests-renderJoinedQuests-bottomButtons'>
+                            <button>(Unsubscribe)</button>
+                            <button>(Supply / Withdraw)</button>
+                        </div>
+
+
                     </div>
                 ) : (
                     <div>No Quest Joined Yet</div>
@@ -52,13 +85,23 @@ const Quests = () => {
                         <h4>Push New Quest To The Community !</h4>
                         <p>By Submitting Your Idea,</p>
                         <p>Act for your ideas !</p>
-                        <button>New Quest</button>
+                        <button>Coming Soon</button>
                     </div>
                 ) : (
                     <div className='Quests-renderJoinedQuests-box-container'>
 
-                        <h4>Twitter Quest</h4>
-                        <button onClick={() => handleJoinQuest()}>Join Quest</button>
+                        <div className='Quests-renderJoinedQuests-top'>
+                            <div className='Quests-renderJoinedQuests-top-left'>
+                                <img src={twitterBird} className="Quests-TwitterBird" />
+                            </div>
+                            <div className='Quests-renderJoinedQuests-top-right'>
+                                <h4 className='Quests-renderJoinedQuests-top-right-title'>Tweet Less !</h4>
+                                <p className='Quests-renderJoinedQuests-top-right-text'>Focus on value, not quantity</p>
+                            </div>
+                            <button className="QRAQB" onClick={() => handleJoinQuest()}>Join Quest</button>
+                            <button className="QRAQB">(Supply / Withdraw)</button>
+
+                        </div>
                     </div>
 
                 )}
