@@ -99,7 +99,8 @@
 .Quests-renderJoinedQuests-top-left{
   display: flex;
   justify-content: center;
-  width: 30%;
+  width: 20%;
+  min-width: 100px;
 }
 .Quests-TwitterBird{
   height: 70px;
