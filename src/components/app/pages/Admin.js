@@ -12,7 +12,7 @@ const Admin = () => {
     const [tqEntryCost, setTqEntryCost] = useState(0)
     const [tqFees, setTqFees] = useState(0)
     const [tqDelayPeriod, setTqDelayPeriod] = useState(0)
-    const [tqToken, setTqToken] = useState("Token Entry Address")
+    const [tqToken, setTqToken] = useState("TokenEntryAddress: 0x9aa7fEc87CA69695Dd1f879567CcF49F3ba417E2")
     const [tqMemberShipAddress, setTqMemberShipAddress] = useState("MemberShip Contract Address")
     const [tqLessAddress, setTqLessAddress] = useState("Les Contract Address")
 

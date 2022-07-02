@@ -16,7 +16,8 @@ const NftMinter = () => {
     const [isMember, setIsMember] = useState(false);
     const handleCreateNewMember = async () => {
         const data = await IMemberShipInstance.safeMint(stateAppData.userAddress, userName, userEmail, twitterUserName);
-        console.log("CreateUserModal : handleCreateUser() data from db after createUser(): ", data)
+        const awaitData = await data;
+        console.log("CreateUserModal : handleCreateUser() data from db after createUser(): ", awaitData)
         setIsMember(true);
         await dispatchAppData(
             {

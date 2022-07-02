@@ -6,6 +6,7 @@ import QuestsDesign from "../../../assets/QuestIcon.png"
 import ITwitterQuestInstance from '../../../utils/interfaces/ITwitterQuestInstance';
 import NftMinter from "./NftMinter"
 import twitterBird from "../../../assets/Twitter_Bird.svg"
+import IFreeTokenInstance from '../../../utils/interfaces/IFreeTokenInstance';
 const Quests = () => {
     const { stateAppData, dispatchAppData } = useContext(AppDataStoreContext)
     let userStatus = stateAppData.userStatus
@@ -26,8 +27,10 @@ const Quests = () => {
         twitterDataSummary.durationPeriod = new Date(await req.durationPeriod * 1000);
         twitterDataSummary.cycleStartAt = new Date(await req.cycleStartAt * 1000);
         twitterDataSummary.cycleEndAt = new Date(await req.cycleEndAt * 1000);
-        twitterDataSummary.actualQuestParticipants = await req.actualQuestParticipants;
-        // console.log("Quests Infos Retrieved :", twitterDataSummary)
+        twitterDataSummary.actualParticipantsNumber = parseInt(await req.actualParticipantsNumber.toString());
+        twitterDataSummary.actualWaitingListNumber = parseInt(await req.actualWaitingListNumber.toString());
+        twitterDataSummary.actualWaitingListSubscribeAddress = await req.actualWaitingListSubscribeAddress;
+        console.log("Quests Infos Retrieved :", req, req.actualWaitingListNumber)
 
         await dispatchAppData({
             type: 'setAppData',
@@ -52,17 +55,61 @@ const Quests = () => {
         let ress = await res
 
         let res2 = await ITwitterQuestInstance.waitingList(stateAppData.userAddress)
+        let inTwitterWaitingList = true
+
         console.log("Quest Joinded ! ", ress, res2);
+
+        await dispatchAppData({
+            type: 'setAppData',
+            ...stateAppData,
+            inTwitterWaitingList
+        })
+    }
+
+    async function handleUnscubscribeTwitterQuest() {
+        let userAddress = stateAppData.userAddress
+        let waitingListAddresses = stateAppData.twitterDataSummary.actualWaitingListSubscribeAddress
+        let userIndex;
+
+        for (let i = 0; i < waitingListAddresses.length; i++) {
+            if (waitingListAddresses[i].toLowerCase() == userAddress) {
+                userIndex = i;
+            }
+        }
+        console.log("handleUnscubscribeTwitterQuest() ! ", userAddress, waitingListAddresses, userIndex);
+
+        // let signerInstance = ITwitterQuestInstance.getSigners();
+        let res = await ITwitterQuestInstance.unregisterFromWaitingList(userIndex)
+        let ress = await res
+        let resTest = await ITwitterQuestInstance.waitingList(userAddress);
+        let inTwitterWaitingList = false
+        console.log("Quest Successfully Unscubscribed ! ", ress, res, resTest);
+        await dispatchAppData({
+            type: 'setAppData',
+            ...stateAppData,
+            inTwitterWaitingList
+        })
+    }
+
+    async function handleMintFreeToken() {
+        let numToMint = 100e6
+        await IFreeTokenInstance.mint(stateAppData.userAddress, numToMint)
     }
 
     
 
     function renderJoinedQuests() {
         let isInWaitingList = stateAppData.inTwitterWaitingList;
-        let twitterQuestSummary = {}
-        twitterQuestSummary = stateAppData.twitterDataSummary
-        // let startDate = twitterQuestSummary.actualFees
-        // console.log("EUUYH", twitterQuestSummary)
+        // let tqS = {}
+        let tqS = stateAppData.twitterDataSummary;
+        // console.log("TQS", tqS)
+        let tqStartAt = tqS.cycleStartAt;
+        let tqEndAt = tqS.cycleEndAt;
+        let tqActualQuestBal = tqS.actualQuestBalance
+        let tqActualParticipantsNumber = tqS.actualParticipantsNumber
+        let tqActualWaitingListNumber = tqS.actualWaitingListNumber;
+
+        console.log("EUUYH", tqActualWaitingListNumber)
         return (
             <>
                 {isInWaitingList ? (
@@ -81,15 +128,15 @@ const Quests = () => {
                         <div className='Quests-renderJoinedQuests-bottom'>
                             <div className='Quests-renderJoinedQuests-bottom-left'>
 
-                                {/* <p>Start : { startDate }</p> */}
-                                <p>End : 1/08/2022</p>
+                                <p>Start : { tqStartAt.toLocaleString() }</p>
+                                <p>End : { tqEndAt.toLocaleString() }</p>
                                 <p>Total Pool Gain :</p>
-                                <p>1290 Dai</p>
+                                <p>{tqActualQuestBal} Dai</p>
 
                             </div>
                             <div className='Quests-renderJoinedQuests-bottom-right'>
-                                <p>Total Participants : 129</p>
-                                <p>Total Waiting List : 146</p>
+                                <p>Total Participants : {tqActualParticipantsNumber}</p>
+                                <p>Total Waiting List : {tqActualWaitingListNumber}</p>
                                 <p>Participe : ❌</p>
                                 <p>Waiting List : ✔</p>
 
@@ -98,9 +145,10 @@ const Quests = () => {
                         </div>
 
                         <div className='Quests-renderJoinedQuests-bottomButtons'>
-                            <button>(Unsubscribe)</button>
+                            <button onClick={() => handleUnscubscribeTwitterQuest()}>Unsubscribe</button>
                             <button>(Supply / Withdraw)</button>
                         </div>
+                        <button onClick={() => handleMintFreeToken()}>Mint100TUsdc</button>
 
 
                     </div>
