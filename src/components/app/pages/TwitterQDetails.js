@@ -138,8 +138,9 @@ const TwitterQDetails = ({ setIsOpen }) => {
               <button className="deleteBtn" onClick={() => handleSupply()}>
                 Supply
               </button>
+              <button className="deleteBtn" onClick={() => {handleMintFreeToken()}}>(Mint Free TUsdc)</button>
               <button
-                className="cancelBtn"
+                className="deleteBtn" // old cancelBtn
                 onClick={() => handleWithdraw()}
               >
                 Withdraw
