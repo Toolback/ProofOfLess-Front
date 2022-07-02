@@ -107,26 +107,28 @@ const TwitterQDetails = ({ setIsOpen }) => {
 
           </button>
           <div className="modalContent">
-          <div className='ModalTwitter-renderJoinedQuests'>
-
-            <div className='ModalTwitter-renderJoinedQuests-left'>
-
-              <p>Start : {tqStartAt}</p>
+            
+          <p>Start : {tqStartAt}</p>
               <p>End : {tqEndAt}</p>
-              <p>Total Pool Gain :</p>
-              <p>{tqActualQuestBal} Usdc</p>
-              <p>Your Balance :</p>
-                                <p>{tqActualUserBal} Usdc</p>
+            <div className='ModalTwitter-renderJoinedQuests'>
 
-            </div>
+              <div className='ModalTwitter-renderJoinedQuests-left'>
 
-            <div className='ModalTwitter-renderJoinedQuests-right'>
-              <p>Total Participants : {tqActualParticipantsNumber}</p>
-              <p>Total Waiting List : {tqActualWaitingListNumber}</p>
-              <p>Participe : ❌</p>
-              <p>Waiting List : ✔</p>
 
-            </div>
+                <p>Total Pool Gain :</p>
+                <p>{tqActualQuestBal} Usdc</p>
+                <p>Your Balance :</p>
+                <p>{tqActualUserBal} Usdc</p>
+
+              </div>
+
+              <div className='ModalTwitter-renderJoinedQuests-right'>
+                <p>Total Participants : {tqActualParticipantsNumber}</p>
+                <p>Total Waiting List : {tqActualWaitingListNumber}</p>
+                <p>Participe : ❌</p>
+                <p>Waiting List : ✔</p>
+
+              </div>
             </div>
 
             <p>Amount To Handle </p>
@@ -138,7 +140,7 @@ const TwitterQDetails = ({ setIsOpen }) => {
               <button className="deleteBtn" onClick={() => handleSupply()}>
                 Supply
               </button>
-              <button className="deleteBtn" onClick={() => {handleMintFreeToken()}}>(Mint Free TUsdc)</button>
+              <button className="deleteBtn" onClick={() => { handleMintFreeToken() }}>(Mint Free TUsdc)</button>
               <button
                 className="deleteBtn" // old cancelBtn
                 onClick={() => handleWithdraw()}
