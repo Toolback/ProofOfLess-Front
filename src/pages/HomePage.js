@@ -19,7 +19,7 @@ const HomeFront = () => {
       </div>
 
       <div className="Home-lessismore">
-        <p>Less is more. Earn rewards for doing less TWEETING</p>
+        <p>Less is more. Earn rewards for doing less <b><u>TWEETING</u></b></p>
       </div>
 
       <div className="Home-buttons-app">

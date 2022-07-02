@@ -44,8 +44,8 @@ const AppLayoutTop = (destination, data) => {
       if (chainId != 80001) {
         await AddNetwork()
       } else {
-      let userChain = "Mumbai"
-      console.log("CHAIN ID ", chainId)
+      let userChain = "Mumbai Testnet"
+      // console.log("CHAIN ID ", chainId)
       let userAccounts = address
       let userAddress = address[0];
       let userStatus;
