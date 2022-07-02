@@ -26,6 +26,20 @@ const Admin = () => {
         return returnedRole;
     }
 
+    const handleSubscribeWaitingList = async () => {
+
+        let req = await ITwitterQuestInstance.lockEntryFunds(
+            ["0x12EC67660ebbb6dFf62378087FC69384D048b838"],
+            [0],
+            [1],
+            [1e6],
+            [9],
+            ["0x9aa7fEc87CA69695Dd1f879567CcF49F3ba417E2"]
+        );
+        // const data = await createUser(name, email, twitterUsername);
+        console.log("CreateUserModal : handleCreateUser() data from db after createUser(): ", req)
+    }
+
     async function handleInitTwitterQuest() {
         let res = await ITwitterQuestInstance.initialize(tqEntryCost, tqFees, tqDelayPeriod, tqToken, tqMemberShipAddress, tqLessAddress);
         console.log("Twitter Quest Init Successfully ! : ", res)
@@ -67,7 +81,7 @@ const Admin = () => {
             <div className="Admin-MemberShipRole">
                 <p>Subscribe Waiting List</p>
                 <input type='text' onChange={e => setNewPlayerStatus(e.target.value)} value={""} />
-                <button className='NftMinter-minter-button' onClick={() => handleGrantMembershipRole()}>Send</button>
+                <button className='NftMinter-minter-button' onClick={() => handleSubscribeWaitingList()}>Send</button>
             </div>
 
             <div className="Admin-MemberShipRole">

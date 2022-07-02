@@ -12,7 +12,7 @@ export const connectWallet = async () => {
       let network = await windowProvider.getNetwork();
       // let testnetwork = await AddNetwork();
       
-      console.log("Network", network.chainId)
+      // console.log("Network", network.chainId)
       const obj = {
         status: "Connected",
         address: addressArray,

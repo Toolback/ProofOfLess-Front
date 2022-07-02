@@ -36,6 +36,8 @@ export function reducer(state, action) {
                 isAdmin: action.isAdmin,
                 twitterUserName: action.twitterUserName,
                 twitterDataSummary: action.twitterDataSummary,
+                twitterQuestBal: action.twitterQuestBal,
+                twitterUserBal: action.twitterUserBal,
                 inTwitterWaitingList: action.inTwitterWaitingList,
                 userChain: action.userChain,
                 listMembersAddress: action.listMembersAddress,

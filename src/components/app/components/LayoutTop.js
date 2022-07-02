@@ -71,12 +71,19 @@ const AppLayoutTop = (destination, data) => {
       }
 
       let inTwitterWaitingList = await ITwitterQuestInstance.waitingList(userAddress);
-      console.log("Waiting list", inTwitterWaitingList);
+      // console.log("Waiting list", inTwitterWaitingList);
       let isTwitterParticipant = await ITwitterQuestInstance.userTwitterData(userAddress)
-      console.log("User Twitter Quest Data", isTwitterParticipant[3].toString());
+      // console.log("User Twitter Quest Data", isTwitterParticipant[3].toString());
 
+
+        let bal1 = await ITwitterQuestInstance.questBalance("0x9aa7fEc87CA69695Dd1f879567CcF49F3ba417E2")
+        let bal2 = await ITwitterQuestInstance.userPoolShares(userAddress, "0x9aa7fEc87CA69695Dd1f879567CcF49F3ba417E2")
+       
+        let twitterQuestBal = parseInt(bal1.toString())
+        let twitterUserBal = parseInt(bal2.toString())
       // let resMembersAddress = await IMemberShipInstace.retrieveMembersAddress();
       // let listMembersAddress = await resMembersAddress
+      console.log("User Twitter BAL Data", twitterQuestBal, twitterUserBal);
 
       await dispatchAppData(
         {
@@ -87,6 +94,8 @@ const AppLayoutTop = (destination, data) => {
           userAddress,
           userChain,
           isMember,
+          twitterQuestBal,
+          twitterUserBal,
           inTwitterWaitingList
 
         }

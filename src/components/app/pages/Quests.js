@@ -7,68 +7,81 @@ import ITwitterQuestInstance from '../../../utils/interfaces/ITwitterQuestInstan
 import NftMinter from "./NftMinter"
 import twitterBird from "../../../assets/Twitter_Bird.svg"
 import IFreeTokenInstance from '../../../utils/interfaces/IFreeTokenInstance';
+import { RiInformationLine } from "react-icons/ri";
+
+import TwitterQDetails from './TwitterQDetails'
 const Quests = () => {
     const { stateAppData, dispatchAppData } = useContext(AppDataStoreContext)
     let userStatus = stateAppData.userStatus
     const isConnected = Boolean(userStatus !== 'connect to retrieve');
     const isNotMember = Boolean(userStatus == 'Connected')
+    const [isOpen, setIsOpen] = useState(false);
 
-    const retrieveMembersInfos = useCallback(async () => { 
-        let twitterDataSummary = {}
-        let req = {}
-        req = await ITwitterQuestInstance.getQuestSummarize();
-        twitterDataSummary.lessTokenAddress = await req.lessTokenAddress;
-        twitterDataSummary.memberShipTokenAddress = await req.memberShipTokenAddress;
-        twitterDataSummary.entryToken = parseInt(await req.entryToken.toString());
-        twitterDataSummary.entryCost = parseInt(await req.entryCost.toString());
-        twitterDataSummary.amountLessReward = parseInt(await req.amountLessReward.toString());
-        twitterDataSummary.actualFees = parseInt(await req.actualFees.toString());
-        twitterDataSummary.actualQuestBalance = parseInt(await req.actualQuestBalance.toString());
-        twitterDataSummary.durationPeriod = new Date(await req.durationPeriod * 1000);
-        twitterDataSummary.cycleStartAt = new Date(await req.cycleStartAt * 1000);
-        twitterDataSummary.cycleEndAt = new Date(await req.cycleEndAt * 1000);
-        twitterDataSummary.actualParticipantsNumber = parseInt(await req.actualParticipantsNumber.toString());
-        twitterDataSummary.actualWaitingListNumber = parseInt(await req.actualWaitingListNumber.toString());
-        twitterDataSummary.actualWaitingListSubscribeAddress = await req.actualWaitingListSubscribeAddress;
-        console.log("Quests Infos Retrieved :", req, req.actualWaitingListNumber)
+    let tqActualQuestBal = stateAppData.twitterQuestBal
+    let tqActualUserBal = stateAppData.twitterUserBal
 
-        await dispatchAppData({
-            type: 'setAppData',
-            ...stateAppData,
-            twitterDataSummary
-        })
+    // const retrieveMembersInfos = useCallback(async () => {
+    //     let twitterDataSummary = {}
+    //     let req = {}
+    //     req = await ITwitterQuestInstance.getQuestSummarize();
+    //     twitterDataSummary.lessTokenAddress = await req.lessTokenAddress;
+    //     twitterDataSummary.memberShipTokenAddress = await req.memberShipTokenAddress;
+    //     twitterDataSummary.entryToken = parseInt(await req.entryToken.toString());
+    //     twitterDataSummary.entryCost = parseInt(await req.entryCost.toString());
+    //     twitterDataSummary.amountLessReward = parseInt(await req.amountLessReward.toString());
+    //     twitterDataSummary.actualFees = parseInt(await req.actualFees.toString());
+    //     twitterDataSummary.actualQuestBalance = parseInt(await req.actualQuestBalance.toString());
+    //     let date1 = new Date(await req.durationPeriod * 1000)
+    //     twitterDataSummary.durationPeriod = date1.toLocaleString();
+    //     let date2 = new Date(await req.cycleStartAt * 1000)
+    //     twitterDataSummary.cycleStartAt = date2.toLocaleString();
+    //     let date3 = new Date(await req.cycleEndAt * 1000)
+    //     twitterDataSummary.cycleEndAt = date3.toLocaleString();
+    //     twitterDataSummary.actualParticipantsNumber = parseInt(await req.actualParticipantsNumber.toString());
+    //     twitterDataSummary.actualWaitingListNumber = parseInt(await req.actualWaitingListNumber.toString());
+    //     twitterDataSummary.actualWaitingListSubscribeAddress = await req.actualWaitingListSubscribeAddress;
+    //     console.log("Quests Infos Retrieved :", req, req.actualWaitingListNumber)
 
-    })
+    //     let userBal = await ITwitterQuestInstance.userPoolShares(stateAppData.userAddress, "0x9aa7fEc87CA69695Dd1f879567CcF49F3ba417E2")
 
-    useEffect(() => {
-        retrieveMembersInfos()
-    }, [])
+    //     console.log("User Supply Funds", userBal)
+
+    //     await dispatchAppData({
+    //         type: 'setAppData',
+    //         ...stateAppData,
+    //         twitterDataSummary
+    //     })
+
+    // })
+
+
+    // useEffect(() => {
+    //         if(isConnected){
+    //         retrieveMembersInfos()
+    //     }
+    //     }, [stateAppData.userStatus])
+
     // console.log("Quests Infos Retrieved Ad:", stateAppData.twitterDataSummary)
 
     async function handleJoinQuest() {
-        let userAddress = stateAppData.userAddress
-        console.log("UserAddress ! ", userAddress);
-
-        // let signerInstance = ITwitterQuestInstance.getSigners();
         let res = await ITwitterQuestInstance.registerToWaitingList()
-        console.log("UserAddress ! ", stateAppData.userAddress);
         let ress = await res
-
         let res2 = await ITwitterQuestInstance.waitingList(stateAppData.userAddress)
         let inTwitterWaitingList = true
-
-        console.log("Quest Joinded ! ", ress, res2);
+        let userStatus = stateAppData.userStatus;
+        console.log("Quest Joinded ! ", ress, res2, inTwitterWaitingList);
 
         await dispatchAppData({
             type: 'setAppData',
             ...stateAppData,
-            inTwitterWaitingList
+            inTwitterWaitingList,
+            userStatus
         })
     }
 
     async function handleUnscubscribeTwitterQuest() {
         let userAddress = stateAppData.userAddress
-        let waitingListAddresses = stateAppData.twitterDataSummary.actualWaitingListSubscribeAddress
+        let waitingListAddresses = await ITwitterQuestInstance.getAllSubscribed()
         let userIndex;
 
         for (let i = 0; i < waitingListAddresses.length; i++) {
@@ -87,29 +100,19 @@ const Quests = () => {
         await dispatchAppData({
             type: 'setAppData',
             ...stateAppData,
-            inTwitterWaitingList
+            inTwitterWaitingList // else userStatus ? or something else ?
         })
     }
 
-    async function handleMintFreeToken() {
-        let numToMint = 100e6
-        await IFreeTokenInstance.mint(stateAppData.userAddress, numToMint)
-    }
 
-    
+
 
     function renderJoinedQuests() {
-        let isInWaitingList = stateAppData.inTwitterWaitingList;
-        // let tqS = {}
-        let tqS = stateAppData.twitterDataSummary;
-        // console.log("TQS", tqS)
-        let tqStartAt = tqS.cycleStartAt;
-        let tqEndAt = tqS.cycleEndAt;
-        let tqActualQuestBal = tqS.actualQuestBalance
-        let tqActualParticipantsNumber = tqS.actualParticipantsNumber
-        let tqActualWaitingListNumber = tqS.actualWaitingListNumber;
 
-        console.log("EUUYH", tqActualWaitingListNumber)
+        let isInWaitingList = stateAppData.inTwitterWaitingList;
+
+
+
         return (
             <>
                 {isInWaitingList ? (
@@ -128,17 +131,15 @@ const Quests = () => {
                         <div className='Quests-renderJoinedQuests-bottom'>
                             <div className='Quests-renderJoinedQuests-bottom-left'>
 
-                                <p>Start : { tqStartAt.toLocaleString() }</p>
-                                <p>End : { tqEndAt.toLocaleString() }</p>
-                                <p>Total Pool Gain :</p>
-                                <p>{tqActualQuestBal} Dai</p>
+                                <p>Participe : ❌</p>
+                                <p>Actual Quest Gain :</p>
+                                <p>{tqActualQuestBal} Usdc</p>
 
                             </div>
                             <div className='Quests-renderJoinedQuests-bottom-right'>
-                                <p>Total Participants : {tqActualParticipantsNumber}</p>
-                                <p>Total Waiting List : {tqActualWaitingListNumber}</p>
-                                <p>Participe : ❌</p>
                                 <p>Waiting List : ✔</p>
+                                <p>Awaiting Balance :</p>
+                                <p>{tqActualUserBal} Usdc</p>
 
                             </div>
 
@@ -146,10 +147,9 @@ const Quests = () => {
 
                         <div className='Quests-renderJoinedQuests-bottomButtons'>
                             <button onClick={() => handleUnscubscribeTwitterQuest()}>Unsubscribe</button>
-                            <button>(Supply / Withdraw)</button>
+                            <button onClick={() => setIsOpen(true)}><RiInformationLine /></button>
                         </div>
-                        <button onClick={() => handleMintFreeToken()}>Mint100TUsdc</button>
-
+                        {isOpen && <TwitterQDetails setIsOpen={setIsOpen} />}
 
                     </div>
                 ) : (
@@ -182,9 +182,21 @@ const Quests = () => {
                                 <h4 className='Quests-renderJoinedQuests-top-right-title'>Tweet Less !</h4>
                                 <p className='Quests-renderJoinedQuests-top-right-text'>Focus on value, not quantity</p>
                             </div>
-                            <button className="QRAQB" onClick={() => handleJoinQuest()}>Join Quest</button>
-                            <button className="QRAQB">(Supply / Withdraw)</button>
+                            <div className='Quests-renderJoinedQuests-top-right'>
+                                <p>Quest Gain :</p>
+                                <p>{tqActualQuestBal} Usdc</p>
+                            </div>
+                            <div className='Quests-renderJoinedQuests-top-right'>
+                                <p>Your Balance :</p>
+                                <p>{tqActualUserBal} Usdc</p>
+                            </div>
+                            <div className='Quests-renderJoinedQuests-top-right'>
 
+                                <button className="QRAQB" onClick={() => handleJoinQuest()}>Subscribe</button>
+                                <button className="QRAQB" onClick={() => setIsOpen(true)}><RiInformationLine /></button>
+                            </div>
+
+                            {isOpen && <TwitterQDetails setIsOpen={setIsOpen} />}
                         </div>
                     </div>
 
