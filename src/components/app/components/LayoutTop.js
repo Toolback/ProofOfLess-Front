@@ -14,6 +14,7 @@ import ITwitterQuestInstance from '../../../utils/interfaces/ITwitterQuestInstan
 import CreateUserModal from "./CreateUserModal.js";
 
 import { ethers } from "ethers";
+import { AddNetwork } from '../../../utils/functions/AddNetwork'
 
 // Display differents scenes 
 
@@ -39,7 +40,12 @@ const AppLayoutTop = (destination, data) => {
   async function handleConnectClick() {
     
     try {
-      const { address, status, provider, chainId} = await connectWallet();
+      const { address, status, provider, chainId } = await connectWallet();
+      if (chainId != 80001) {
+        await AddNetwork()
+      } else {
+      let userChain = "Mumbai"
+      console.log("CHAIN ID ", chainId)
       let userAccounts = address
       let userAddress = address[0];
       let userStatus;
@@ -75,10 +81,11 @@ const AppLayoutTop = (destination, data) => {
       await dispatchAppData(
         {
           type: 'setAppData',
+          ...stateAppData,
           userAccounts,
           userStatus,
           userAddress,
-          chainId,
+          userChain,
           isMember,
           inTwitterWaitingList
 
@@ -98,12 +105,12 @@ const AppLayoutTop = (destination, data) => {
       // if (userDb.user[0] === undefined) {
       //   setIsOpen(true)
       // }
-    } catch (e) {
+    }} catch (e) {
       console.log("Error Connection WEB3 :", e.message);
       return e.message
     }
   }
-  console.log("results Members Address After Click Connect", stateAppData.userAddress, stateAppData.listMembersAddress)
+  // console.log("results Members Address After Click Connect", stateAppData.userAddress, stateAppData.listMembersAddress)
 
   function walletListenerAll() {
     if (window.ethereum) {
@@ -118,6 +125,7 @@ const AppLayoutTop = (destination, data) => {
             }
           )
           setIsConnected(false)
+          window.location.reload(false)
           // console.log(" - walletListenerAll() : stateAppData.accounts After Dispatch", stateAppData.userAddress)
         }
       })
@@ -127,6 +135,8 @@ const AppLayoutTop = (destination, data) => {
         if (chainId > 0) {
           dispatchAppData({ type: 'setAppData', chainId })
           // console.log(" - walletListenerAll() : stateAppData.chainId After Dispatch", chainId, stateAppData.chainId)
+          setIsConnected(false)
+          window.location.reload(false)
 
         }
       })
@@ -151,12 +161,12 @@ const AppLayoutTop = (destination, data) => {
       <div className="LayoutTop-topbox-right-box">
 
         <div className="atrb-web3-buttonsConnect" id="AppBridge">
-          <button onClick={() => handleLoadTwitterData()}>LoadData</button>
+          {/* <button onClick={() => handleLoadTwitterData()}>LoadData</button> */}
 
-          {/* <button>Bridge</button> */}
+          <button>Bridge</button>
         </div>
         <div className="atrb-web3-buttonsConnect" id="AppChain">
-          {isConnected ? <button>Chain : ${stateAppData.chainId}</button> : 
+          {isConnected ? <button>Chain : {stateAppData.userChain}</button> : 
           <button>Chain :</button>}
           
         </div>

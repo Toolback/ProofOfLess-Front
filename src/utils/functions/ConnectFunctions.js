@@ -1,4 +1,5 @@
 import { ethers } from "ethers";
+import { AddNetwork } from "./AddNetwork"
 
 // Wallect Connect 
 
@@ -9,11 +10,14 @@ export const connectWallet = async () => {
       let addressArray = await windowProvider.send("eth_requestAccounts", []);
       let provider = await windowProvider.getSigner(addressArray[0]);
       let network = await windowProvider.getNetwork();
+      // let testnetwork = await AddNetwork();
+      
+      console.log("Network", network.chainId)
       const obj = {
         status: "Connected",
         address: addressArray,
         provider: provider,
-        chainId: network.name
+        chainId: network.chainId
       };
       return obj;
     } catch (err) {

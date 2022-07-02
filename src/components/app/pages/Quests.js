@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState, useCallback } from 'react'
 import "../../../css/app/Quests.css"
 import { AppDataStoreContext } from '../../../StoreAppData'
 
@@ -11,6 +11,36 @@ const Quests = () => {
     let userStatus = stateAppData.userStatus
     const isConnected = Boolean(userStatus !== 'connect to retrieve');
     const isNotMember = Boolean(userStatus == 'Connected')
+
+    const retrieveMembersInfos = useCallback(async () => { 
+        let twitterDataSummary = {}
+        let req = {}
+        req = await ITwitterQuestInstance.getQuestSummarize();
+        twitterDataSummary.lessTokenAddress = await req.lessTokenAddress;
+        twitterDataSummary.memberShipTokenAddress = await req.memberShipTokenAddress;
+        twitterDataSummary.entryToken = parseInt(await req.entryToken.toString());
+        twitterDataSummary.entryCost = parseInt(await req.entryCost.toString());
+        twitterDataSummary.amountLessReward = parseInt(await req.amountLessReward.toString());
+        twitterDataSummary.actualFees = parseInt(await req.actualFees.toString());
+        twitterDataSummary.actualQuestBalance = parseInt(await req.actualQuestBalance.toString());
+        twitterDataSummary.durationPeriod = new Date(await req.durationPeriod * 1000);
+        twitterDataSummary.cycleStartAt = new Date(await req.cycleStartAt * 1000);
+        twitterDataSummary.cycleEndAt = new Date(await req.cycleEndAt * 1000);
+        twitterDataSummary.actualQuestParticipants = await req.actualQuestParticipants;
+        // console.log("Quests Infos Retrieved :", twitterDataSummary)
+
+        await dispatchAppData({
+            type: 'setAppData',
+            ...stateAppData,
+            twitterDataSummary
+        })
+
+    })
+
+    useEffect(() => {
+        retrieveMembersInfos()
+    }, [])
+    // console.log("Quests Infos Retrieved Ad:", stateAppData.twitterDataSummary)
 
     async function handleJoinQuest() {
         let userAddress = stateAppData.userAddress
@@ -25,8 +55,14 @@ const Quests = () => {
         console.log("Quest Joinded ! ", ress, res2);
     }
 
+    
+
     function renderJoinedQuests() {
         let isInWaitingList = stateAppData.inTwitterWaitingList;
+        let twitterQuestSummary = {}
+        twitterQuestSummary = stateAppData.twitterDataSummary
+        // let startDate = twitterQuestSummary.actualFees
+        // console.log("EUUYH", twitterQuestSummary)
         return (
             <>
                 {isInWaitingList ? (
@@ -45,7 +81,7 @@ const Quests = () => {
                         <div className='Quests-renderJoinedQuests-bottom'>
                             <div className='Quests-renderJoinedQuests-bottom-left'>
 
-                                <p>Start :1/07/2022</p>
+                                {/* <p>Start : { startDate }</p> */}
                                 <p>End : 1/08/2022</p>
                                 <p>Total Pool Gain :</p>
                                 <p>1290 Dai</p>
