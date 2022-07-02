@@ -91,6 +91,12 @@ const TwitterQDetails = ({ setIsOpen }) => {
     let numToMint = 100e6
     await IFreeTokenInstance.mint(stateAppData.userAddress, numToMint)
   }
+
+  function renderWaitingStatus() {
+    if (isInWaitingList) {
+      return(<></>)
+    }
+  }
   return (
     <>
       <div className="darkBG" onClick={() => setIsOpen(false)} />
@@ -126,7 +132,7 @@ const TwitterQDetails = ({ setIsOpen }) => {
                 <p>Total Participants : {tqActualParticipantsNumber}</p>
                 <p>Total Waiting List : {tqActualWaitingListNumber}</p>
                 <p>Participe : ❌</p>
-                <p>Waiting List : ✔</p>
+                <p>Waiting List : {renderWaitingStatus()}</p>
 
               </div>
             </div>

@@ -5,17 +5,12 @@ import IMemberShipInstance from '../../../utils/interfaces/IMemberShipInstance';
 import { AppDataStoreContext } from '../../../StoreAppData'
 
 // import MemberList from "../components/MemberList";
-
-// import Pagination from "../components/Pagination";
-
-import { RiUserAddLine } from "react-icons/ri";
-
-// let PageSize = 10; Scop ?
+import { Card } from "semantic-ui-react";
+// import 'semantic-ui-css/semantic.min.css'
 
 const Community = () => {
     const [initialMembers, setInitialMembers] = useState([[]]);
     const { stateAppData, dispatchAppData } = useContext(AppDataStoreContext);
-
 
     const retrieveMembersInfos = useCallback(async () => {
         console.log("Community : retrieveMembersInfos() Starting: ", stateAppData.listMembersAddress, initialMembers)
@@ -36,7 +31,7 @@ const Community = () => {
         setInitialMembers(res)
         await dispatchAppData(
             {
-
+                
                 type: 'setAppData',
                 ...stateAppData,
                 listMembersAddress,
@@ -71,53 +66,16 @@ const Community = () => {
     }, []);
 
     function renderMembers() {
-        // console.log("RenderMembers()", initialMembers)
-        // const [currentPage, setCurrentPage] = useState(1);
-        // let PageSize = 10;
-
-        // const currentTableData = useMemo(() => {
-        //     const firstPageIndex = (currentPage - 1) * PageSize;
-        //     const lastPageIndex = firstPageIndex + PageSize;
-        //     return initialMembers.slice(firstPageIndex, lastPageIndex);
-        // }, [currentPage]);
-
-        return (
-            <>
-                <table>
-                    <thead>
-                        <tr>
-                            <th>UserAddress</th>
-                            <th>UserName</th>
-                            {/* <th>TokenId</th> */}
-                            <th>Twitter UserName</th>
-                            <th>Add Friend</th>
-
-                        </tr>
-                    </thead>
-                    <tbody>
-                        {initialMembers.map(item => {
-                            //   let tokenId = item.tokenId.toString()
-                            return (
-                                <tr>
-                                    <td>{item.userAddress}</td>
-                                    <td>{item.userName}</td>
-                                    {/* <td>{tokenId}</td> */}
-                                    <td>{item.twitterUserName}</td>
-                                    <td><button><RiUserAddLine /></button></td>
-                                </tr>
-                            );
-                        })}
-                    </tbody>
-                </table>
-                {/* <Pagination
-                    className="pagination-bar"
-                    currentPage={currentPage}
-                    totalCount={initialMembers.length}
-                    pageSize={PageSize}
-                    onPageChange={page => setCurrentPage(page)}
-                /> */}
-            </>
-        );
+        console.log("RenderMembers()", initialMembers)
+        const items = initialMembers.map((userAddress, userName) => {
+            // let userInfos = await IMemberShipInstance.
+            return {
+                header: userAddress[0],
+                description: userAddress[1],
+            };
+        });
+        console.log("renderMembers(): items :", items)
+        return <Card.Group items={items} />;
     }
 
 
@@ -129,23 +87,23 @@ const Community = () => {
                 <img src={CommunityIcon2} alt="CommunityWork" className='appCommunityHero' />
             </div>
 
-            <div className="appCommunity-nav-buttons-container">
+            {/* <div className="appCommunity-nav-buttons-container">
                 <button className="appCommunityNavButtons">Users</button>
-                <button className="appCommunityNavButtons">Friends (Coming Soon)</button>
-            </div>
+                <button className="appCommunityNavButtons">Friends</button>
+            </div> */}
 
-            <div className="appCommunity-Container-Title">
+            {/* <div className="appCommunity-Container-Title">
                 <h3>Global Statistics</h3>
-            </div>
+            </div> */}
 
-            <div className="appCommunity-users-stats-container  Community-gridItemContainer3">
+            {/* <div className="appCommunity-users-stats-container  Community-gridItemContainer3">
                 <div className='appCommunity-users-stats-bg'>
                     <h5>Total Members</h5>
                     {initialMembers.length}
                 </div>
                 <div className='appCommunity-users-stats-bg'></div>
                 <div className='appCommunity-users-stats-bg'></div>
-            </div>
+            </div> */}
             <div className="appCommunity-Container-Title">
                 <h3>List Of Users</h3>
 

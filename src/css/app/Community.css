@@ -7,9 +7,14 @@
   gap: 10px;
 }
 
-.appCommunity-hero-design{}
+.appCommunity-hero-design{
 
-.appCommunityHero{}
+}
+
+.appCommunityHero{
+  height: 200px;
+  margin-bottom: 30px;
+}
 
 
 .appCommunityNavButtons{}
@@ -31,6 +36,9 @@
 }
 
 .appCommunity-users-list-container{
+  display: flex;
+  justify-content: center;
+  gap: 20px;
   background-color: #F4EEE9;
   width: 80%;
   height: 500px;

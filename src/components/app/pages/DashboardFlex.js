@@ -56,7 +56,10 @@ const DashboardFlex = (props) => {
           <div className="Dashboard-profil-container Dashboard-MultiBoxContainer">
             <div className="Dashboard-profil-Title">
               <h2>Profil</h2>
-            </div>
+              </div>
+              <div className="Dashboard-profil-InfosContainer-right-top">
+              <img src={avatarDonut} alt="userAvatar" className="avatar-persona" />
+              </div>
             <div className="Dashboard-profil-InfosContainer-top">
 
               <div className="Dashboard-profil-InfosContainer-left-top">
@@ -69,20 +72,16 @@ const DashboardFlex = (props) => {
                       <p>Public Address : 0xDev</p>
                       <p>Twitter : @DevleDev ✅</p>
 
-                      {/* <p>Phone Number : Complete Verification 📝</p> */}
                     </div>
-                    {/* <div className="Dashboard-profil-InfosContainer-left-bottom-right">
-                      <p>Twitter : @DevleDev ✅</p>
-                      <p>Youtube: @DevleDev ✅</p>
-                      <p>Instagram: @DevleDev ✅</p>
-                    </div> */}
+                    <div className="Dashboard-profil-InfosContainer-left-bottom-right">
+                      <p>Twitter : Coming Soon ⏱</p>
+                      <p>Youtube: Coming Soon ⏱</p>
+                      <p>Instagram: Coming Soon ⏱</p>
+                      <p>Phone Number : Coming Soon ⏱</p>
+
+                    </div>
                   </div>              </div>
-              <div className="Dashboard-profil-InfosContainer-right-top">
-              <img src={avatarDonut} alt="userAvatar" className="avatar-persona" />
 
-                 
-
-              </div>
             </div>
 
 
@@ -118,43 +117,10 @@ const DashboardFlex = (props) => {
 
           </div>
 
-          <div className="Dashboard-stats-container Dashboard-MultiBoxContainer">
-            <h2>Quests Statistics</h2>
-            <div className="Dashboard-statistics-card1">
-              <div className="Dashboard-statistics-card1-text">
-                <h3>Twitter Quest</h3>
-                <h4>Your Objective :</h4>
-              </div>
-              <div className="Dashboard-persoStats-box-cards">
-                <h2>12 </h2>
-                <p>Tweets Per Week</p>
-                <p>Your Average Over 6 Months</p>
-                <ResponsiveContainer width="90%" aspect={2}>
-                  <LineChart
-                    width={500}
-                    height={300}
-                    data={data}
-                    margin={{
-                      top: 15,
-                      right: 30,
-                      left: 20,
-                      bottom: 5,
-                    }}
-                  >
-                    <CartesianGrid horizontal="true" vertical="" stroke="#243240" />
-                    <XAxis dataKey="name" tick={{ fill: "#fff" }} />
-                    <YAxis tick={{ fill: "#fff" }} />
-                    <Tooltip contentStyle={{ backgroundColor: "#8884d8", color: "#fff" }} itemStyle={{ color: "#fff" }} cursor={false} />
-                    <Line type="monotone" dataKey="Total" stroke="#8884d8" strokeWidth="5" dot={{ fill: "#2e4355", stroke: "#8884d8", strokeWidth: 2, r: 5 }} activeDot={{ fill: "#2e4355", stroke: "#8884d8", strokeWidth: 5, r: 10 }} />
-
-                  </LineChart>
-                </ResponsiveContainer>
-              </div>
-            </div>
 
 
 
-          </div>
+
 
 
         </>
