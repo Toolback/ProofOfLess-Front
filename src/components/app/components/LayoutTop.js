@@ -49,7 +49,9 @@ const AppLayoutTop = (destination, data) => {
       let userAccounts = address
       let userAddress = address[0];
       let userStatus;
-      let isMember = false;
+        let isMember = false;
+        let userProfil = {}
+        let userNftProfil = {}
 
       // const providerD = new ethers.providers.Web3Provider(window.ethereum);
       // await providerD.send("eth_requestAccounts", []);
@@ -59,6 +61,27 @@ const AppLayoutTop = (destination, data) => {
         userStatus = "Member";
         isMember = true;
         setIsConnected(true);
+        let req1 = await IMemberShipInstace.usersInfos(userAddress)
+        let userTokenId = parseInt(req1.tokenId.toString())
+        let req2 = await IMemberShipInstace.userProfil(userTokenId, userAddress)
+
+        userProfil.userName = req1.userName;
+        userProfil.email = req1.email;
+        userProfil.twitterUserName = req1.twitterUserName;
+        userProfil.tokenId = parseInt(req1.tokenId.toString());
+        userProfil.friendsAddress = req1.friendsAddress;
+
+
+        userNftProfil.experience = parseInt(req2.experience.toString());
+        userNftProfil.questAccepted = parseInt(req2.questAccepted.toString());
+        userNftProfil.questCompleted = parseInt(req2.questCompleted.toString());
+        userNftProfil.daoProposalCreated = parseInt(req2.daoProposalCreated.toString());
+        userNftProfil.daoProposalCreatedAccepted = parseInt(req2.daoProposalCreatedAccepted.toString());
+        userNftProfil.daoProposalVoted = parseInt(req2.daoProposalVoted.toString());
+        userNftProfil.challengeReceived = parseInt(req2.challengeReceived.toString());
+        userNftProfil.friendChallenged = parseInt(req2.friendChallenged.toString());
+
+        console.log("USERINFO RETRIEVED", userProfil, userNftProfil )
       } else {
         userStatus = status;
         setIsConnected(true);
@@ -66,6 +89,7 @@ const AppLayoutTop = (destination, data) => {
 
       if (isAdmin(userAddress)) {
         userStatus = "Admin";
+
         // isMember = true; Paused for Minter Page still accessible
         setIsConnected(true);
       }
@@ -93,6 +117,8 @@ const AppLayoutTop = (destination, data) => {
           userStatus,
           userAddress,
           userChain,
+          userProfil,
+          userNftProfil,
           isMember,
           twitterQuestBal,
           twitterUserBal,
@@ -115,11 +141,12 @@ const AppLayoutTop = (destination, data) => {
       //   setIsOpen(true)
       // }
     }} catch (e) {
-      console.log("Error Connection WEB3 :", e.message);
+      console.log("Connect Button : Error! Connection WEB3 :", e.message);
       return e.message
     }
   }
   // console.log("results Members Address After Click Connect", stateAppData.userAddress, stateAppData.listMembersAddress)
+  console.log("USERINFO RETRIEVEDAfter", stateAppData.userProfil, stateAppData.userNftProfil )
 
   function walletListenerAll() {
     if (window.ethereum) {
@@ -152,14 +179,7 @@ const AppLayoutTop = (destination, data) => {
     }
   }
 
-  async function handleLoadTwitterData() {
-    // const resp = await getUserIdByUsername(userName);
-    // const userId = resp.user.data.id
 
-    const updateData = await getUserInitialData(stateAppData.userAddress);
-
-    // console.log("... /! : FINAL Results HERE", updateData);
-  }
 
   return (
     <div className="LayoutTop-box-container noselect">
@@ -170,7 +190,6 @@ const AppLayoutTop = (destination, data) => {
       <div className="LayoutTop-topbox-right-box">
 
         <div className="atrb-web3-buttonsConnect" id="AppBridge">
-          {/* <button onClick={() => handleLoadTwitterData()}>LoadData</button> */}
 
           <button>Bridge</button>
         </div>
@@ -196,7 +215,6 @@ const AppLayoutTop = (destination, data) => {
 
         </div>
       </div>
-      {/* <div className="GameNavButton" id="BHome" onClick={()=> handleClick('home')}>Home</div> */}
 
 
     </div>

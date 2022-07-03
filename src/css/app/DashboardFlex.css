@@ -10,20 +10,10 @@
 }
 
 
-
-
 /* ----------------------------------- */
-
-.Dashboard-MultiBoxContainer {
-  background-color: #F4EEE9;
-  border-radius: 30px;
-  width: 95%;
-  box-shadow: 0 10px 20px -10px rgba(61, 54, 54, 0.249);
-
-
+.Dashboard-profil-Title{
+  margin-bottomop: 10px;
 }
-
-/* ----------------------------------- */
 
 
 .Dashboard-profil-container {
@@ -31,23 +21,56 @@
   flex-direction: column;
   justify-items: center;
   align-items: center;
+  background-color: #F4EEE9;
+  border-radius: 30px;
+  width: 95%;
+  box-shadow: 0 10px 20px -10px rgba(61, 54, 54, 0.249);
+  gap: 50px;
+
 
 }
 
-.Dashboard-profil-Title{
-  margin-bottom: 50px;
-}
 
-.Dashboard-profil-InfosContainer-top{
-  display: flex;
-  justify-content: center;
-  width: 80%;
-}
 
-.Dashboard-profil-InfosContainer-left-top{
+.Dashboard-profil-userProfil{
   display: flex;
   flex-direction: column;
   justify-content: center;
+  width: 80%;
+  gap: 30px;
+}
+
+.Dashboard-profil-userProfil-stats-container{
+  display: flex;
+  justify-content: center;
+  text-align: left;
+  /* text-align: left; */
+
+  gap: 50px;
+}
+
+.Dashboard-profil-userProfil-stats-container-left{}
+
+.Dashboard-profil-userProfil-stats-container-right{}
+
+
+
+
+
+.Dashboard-profil-userAvatar{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* min-width: 200px; */
+  width: 95%;
+}
+.Dashboard-profil-userAvatar-left{
+  width: 50%;
+
+}
+
+
+.Dashboard-profil-userAvatar-right{
   width: 50%;
 }
 
@@ -55,27 +78,8 @@
   max-height: 200px;
 }
 
-.Dashboard-profil-InfosContainer-right-top{
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  /* min-width: 200px; */
-  width: 50%;
-}
 
 
-
-.Dashboard-profil-InfosContainer-left-bottom{
-  display: flex;
-  justify-content: center;
-  /* text-align: left; */
-
-  gap: 50px;
-}
-
-.Dashboard-profil-InfosContainer-left-bottom-left{}
-
-.Dashboard-profil-InfosContainer-left-bottom-right{}
 
 /* -- */
 .Dashboard-profil-InfosContainer-bottom{
@@ -93,7 +97,7 @@
 .Dashboard-profil-InfosContainer-right-bottom{
   display: flex;
   justify-content: center;
-  /* text-align: left; */
+  text-align: left;
   gap: 50px;
 
 }

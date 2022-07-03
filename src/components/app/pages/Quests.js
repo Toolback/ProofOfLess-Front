@@ -20,48 +20,6 @@ const Quests = () => {
     let tqActualQuestBal = stateAppData.twitterQuestBal
     let tqActualUserBal = stateAppData.twitterUserBal
 
-    // const retrieveMembersInfos = useCallback(async () => {
-    //     let twitterDataSummary = {}
-    //     let req = {}
-    //     req = await ITwitterQuestInstance.getQuestSummarize();
-    //     twitterDataSummary.lessTokenAddress = await req.lessTokenAddress;
-    //     twitterDataSummary.memberShipTokenAddress = await req.memberShipTokenAddress;
-    //     twitterDataSummary.entryToken = parseInt(await req.entryToken.toString());
-    //     twitterDataSummary.entryCost = parseInt(await req.entryCost.toString());
-    //     twitterDataSummary.amountLessReward = parseInt(await req.amountLessReward.toString());
-    //     twitterDataSummary.actualFees = parseInt(await req.actualFees.toString());
-    //     twitterDataSummary.actualQuestBalance = parseInt(await req.actualQuestBalance.toString());
-    //     let date1 = new Date(await req.durationPeriod * 1000)
-    //     twitterDataSummary.durationPeriod = date1.toLocaleString();
-    //     let date2 = new Date(await req.cycleStartAt * 1000)
-    //     twitterDataSummary.cycleStartAt = date2.toLocaleString();
-    //     let date3 = new Date(await req.cycleEndAt * 1000)
-    //     twitterDataSummary.cycleEndAt = date3.toLocaleString();
-    //     twitterDataSummary.actualParticipantsNumber = parseInt(await req.actualParticipantsNumber.toString());
-    //     twitterDataSummary.actualWaitingListNumber = parseInt(await req.actualWaitingListNumber.toString());
-    //     twitterDataSummary.actualWaitingListSubscribeAddress = await req.actualWaitingListSubscribeAddress;
-    //     console.log("Quests Infos Retrieved :", req, req.actualWaitingListNumber)
-
-    //     let userBal = await ITwitterQuestInstance.userPoolShares(stateAppData.userAddress, "0x9aa7fEc87CA69695Dd1f879567CcF49F3ba417E2")
-
-    //     console.log("User Supply Funds", userBal)
-
-    //     await dispatchAppData({
-    //         type: 'setAppData',
-    //         ...stateAppData,
-    //         twitterDataSummary
-    //     })
-
-    // })
-
-
-    // useEffect(() => {
-    //         if(isConnected){
-    //         retrieveMembersInfos()
-    //     }
-    //     }, [stateAppData.userStatus])
-
-    // console.log("Quests Infos Retrieved Ad:", stateAppData.twitterDataSummary)
 
     async function handleJoinQuest() {
         let res = await ITwitterQuestInstance.registerToWaitingList()
