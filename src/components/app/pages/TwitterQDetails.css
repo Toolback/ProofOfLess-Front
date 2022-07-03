@@ -22,7 +22,7 @@
 
 .modal {
   width: 500px;
-  height: 620px;
+  height: 100%;
   background: #EDE7E2;
   color: black;
   z-index: 30;
@@ -72,12 +72,14 @@
   align-content: center;
   align-items: center;
   align-self: center;
-  height: 300px;
+  margin-top: 50px;
+  margin-bottom: 50px;
+
   gap: 20px;
 }
 
 .modalActions {
-  position: absolute;
+  /* position: absolute; */
   bottom: 2px;
   margin-bottom: 10px;
   width: 100%;

@@ -17,15 +17,15 @@ const TwitterQDetails = ({ setIsOpen }) => {
   const [amount, setAmount] = useState(0e6);
 
   let isInWaitingList = stateAppData.inTwitterWaitingList;
-  // let tqS = {}
+  
   let tqS = stateAppData.twitterDataSummary;
-  // console.log("TQS", tqS)
   let tqStartAt = tqS.cycleStartAt;
   let tqEndAt = tqS.cycleEndAt;
   let tqActualQuestBal = tqS.actualQuestBalance
   let tqActualParticipantsNumber = tqS.actualParticipantsNumber
   let tqActualWaitingListNumber = tqS.actualWaitingListNumber;
   let tqActualUserBal = stateAppData.twitterUserBal;
+  let tqEntryCost = stateAppData.twitterDataSummary.entryCost;
 
   const retrieveMembersInfos = useCallback(async () => {
     let twitterDataSummary = {}
@@ -33,11 +33,11 @@ const TwitterQDetails = ({ setIsOpen }) => {
     req = await ITwitterQuestInstance.getQuestSummarize();
     twitterDataSummary.lessTokenAddress = await req.lessTokenAddress;
     twitterDataSummary.memberShipTokenAddress = await req.memberShipTokenAddress;
-    twitterDataSummary.entryToken = parseInt(await req.entryToken.toString());
-    twitterDataSummary.entryCost = parseInt(await req.entryCost.toString());
+    twitterDataSummary.entryToken = await req.entryToken;
+    twitterDataSummary.entryCost = parseInt(await req.entryCost.toString().slice(0, -6));
     twitterDataSummary.amountLessReward = parseInt(await req.amountLessReward.toString());
-    twitterDataSummary.actualFees = parseInt(await req.actualFees.toString());
-    twitterDataSummary.actualQuestBalance = parseInt(await req.actualQuestBalance.toString());
+    twitterDataSummary.actualFees = parseInt(await req.actualFees.toString().slice(0, -6));
+    twitterDataSummary.actualQuestBalance = parseInt(await req.actualQuestBalance.toString().slice(0, -6));
     let date1 = new Date(await req.durationPeriod * 1000)
     twitterDataSummary.durationPeriod = date1.toLocaleString();
     let date2 = new Date(await req.cycleStartAt * 1000)
@@ -47,11 +47,10 @@ const TwitterQDetails = ({ setIsOpen }) => {
     twitterDataSummary.actualParticipantsNumber = parseInt(await req.actualParticipantsNumber.toString());
     twitterDataSummary.actualWaitingListNumber = parseInt(await req.actualWaitingListNumber.toString());
     twitterDataSummary.actualWaitingListSubscribeAddress = await req.actualWaitingListSubscribeAddress;
-    console.log("Quests Infos Retrieved :", req, req.actualWaitingListNumber)
 
-    let userBal = await ITwitterQuestInstance.userPoolShares(stateAppData.userAddress, "0x9aa7fEc87CA69695Dd1f879567CcF49F3ba417E2")
+    // let userBal = await ITwitterQuestInstance.userPoolShares(stateAppData.userAddress, "0x9aa7fEc87CA69695Dd1f879567CcF49F3ba417E2")
 
-    console.log("User Supply Funds", userBal)
+    console.log("User Supply Funds", req)
 
     await dispatchAppData({
       type: 'setAppData',
@@ -94,7 +93,9 @@ const TwitterQDetails = ({ setIsOpen }) => {
 
   function renderWaitingStatus() {
     if (isInWaitingList) {
-      return(<></>)
+      return(<>✅</>)
+    } else {
+      return (<>❌</>)
     }
   }
   return (
@@ -106,16 +107,17 @@ const TwitterQDetails = ({ setIsOpen }) => {
             <div className="modalTwitter-Logo-Container">
               <img src={twitterBird} className="ModalTwitter-TwitterBird" />
             </div>
-            <h5 className="heading">Twitter Quest Summary</h5>
+            <h3 className="heading">Twitter Quest Summary</h3>
           </div>
           <button className="closeBtn" onClick={() => setIsOpen(false)}>
             <RiCloseLine style={{ marginBottom: "-3px" }} />
 
           </button>
           <div className="modalContent">
-            
-          <p>Start : {tqStartAt}</p>
-              <p>End : {tqEndAt}</p>
+            <p>Actual Cycle Started At :</p>
+          <p>{tqStartAt}</p>
+            <p>Actual Cycle Ending / Beginning Of The Next</p>  
+            <p>{tqEndAt}</p>
             <div className='ModalTwitter-renderJoinedQuests'>
 
               <div className='ModalTwitter-renderJoinedQuests-left'>
@@ -136,8 +138,8 @@ const TwitterQDetails = ({ setIsOpen }) => {
 
               </div>
             </div>
-
-            <p>Amount To Handle </p>
+            <p>Entry Cost : {tqEntryCost}</p>
+            <p>Deposit / Withdraw</p>
             <input type='text' onChange={e => setAmount(e.target.value)} value={amount} />
 
           </div>

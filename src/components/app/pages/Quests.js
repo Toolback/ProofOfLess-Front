@@ -95,7 +95,7 @@ const Quests = () => {
 
                             </div>
                             <div className='Quests-renderJoinedQuests-bottom-right'>
-                                <p>Waiting List : ✔</p>
+                                <p>Waiting List : ✅</p>
                                 <p>Awaiting Balance :</p>
                                 <p>{tqActualUserBal} Usdc</p>
 

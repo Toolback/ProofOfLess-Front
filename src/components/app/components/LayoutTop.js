@@ -103,8 +103,8 @@ const AppLayoutTop = (destination, data) => {
         let bal1 = await ITwitterQuestInstance.questBalance("0x9aa7fEc87CA69695Dd1f879567CcF49F3ba417E2")
         let bal2 = await ITwitterQuestInstance.userPoolShares(userAddress, "0x9aa7fEc87CA69695Dd1f879567CcF49F3ba417E2")
        
-        let twitterQuestBal = parseInt(bal1.toString())
-        let twitterUserBal = parseInt(bal2.toString())
+        let twitterQuestBal = parseInt(bal1.toString().slice(0, -6))
+        let twitterUserBal = parseInt(bal2.toString().slice(0, -6))
       // let resMembersAddress = await IMemberShipInstace.retrieveMembersAddress();
       // let listMembersAddress = await resMembersAddress
       console.log("User Twitter BAL Data", twitterQuestBal, twitterUserBal);

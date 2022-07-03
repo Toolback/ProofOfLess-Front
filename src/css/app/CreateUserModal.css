@@ -54,7 +54,7 @@
   }
   
   .modalActions {
-    position: absolute;
+    /* position: absolute; */
     bottom: 2px;
     margin-bottom: 10px;
     width: 100%;
