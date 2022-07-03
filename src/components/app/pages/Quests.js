@@ -198,7 +198,8 @@ const Quests = () => {
 
                         <div className='Quests-users-handle-bg-quest'>
                             {isConnected ? (<>
-                                <p>Coming Soon ... !</p>
+                                    <p>Coming Soon ... !</p>
+                                    <button><a href="https://twitter.com/intent/tweet?screen_name=proofofless&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-text="This is the beginning of my journey with Proof Of Less !" data-url="https://proof-of-less-front.vercel.app/app" data-related="proofofless" data-show-count="false">Tweet to @proofofless</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></button>
                             </>
                             ) : (<><p>Connect To Retrieve</p></>)}
                         </div>
