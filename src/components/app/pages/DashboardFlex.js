@@ -50,10 +50,10 @@ const DashboardFlex = (props) => {
               <div className="Dashboard-profil-userProfil-stats-container">
 
                 <div className="Dashboard-profil-userProfil-stats-container-left">
-                  <p>Name : {userName}</p>
-                  <p>Email : {email}</p>
-                  <p>Public Address : {userAddress}</p>
-                  <p>Twitter : {twitterUserName}</p>
+                <p>Public Address : {userAddress}</p>
+                <p>Name : {userName} 📝</p>
+                  <p>Email : {email} 📝</p>
+                  <p>Twitter : {twitterUserName} 📝</p>
 
                 </div>
                 <div className="Dashboard-profil-userProfil-stats-container-right">

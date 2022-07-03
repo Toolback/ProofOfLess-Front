@@ -134,7 +134,7 @@ const Community = () => {
                 <button className="appCommunityNavButtons">Friends (Coming Soon)</button>
             </div>
 
-            <div className="appCommunity-Container-Title">
+            {/* <div className="appCommunity-Container-Title">
                 <h3>Global Statistics</h3>
             </div>
 
@@ -145,7 +145,7 @@ const Community = () => {
                 </div>
                 <div className='appCommunity-users-stats-bg'></div>
                 <div className='appCommunity-users-stats-bg'></div>
-            </div>
+            </div> */}
             <div className="appCommunity-Container-Title">
                 <h3>List Of Users</h3>
 

@@ -189,10 +189,10 @@ const AppLayoutTop = (destination, data) => {
 
       <div className="LayoutTop-topbox-right-box">
 
-        <div className="atrb-web3-buttonsConnect" id="AppBridge">
+        {/* <div className="atrb-web3-buttonsConnect" id="AppBridge">
 
           <button>Bridge</button>
-        </div>
+        </div> */}
         <div className="atrb-web3-buttonsConnect" id="AppChain">
           {isConnected ? <button>Chain : {stateAppData.userChain}</button> : 
           <button>Chain :</button>}
