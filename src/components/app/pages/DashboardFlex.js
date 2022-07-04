@@ -70,7 +70,7 @@ const DashboardFlex = (props) => {
             <div className="Dashboard-profil-userAvatar-left">
               <p>Less Balance : 0</p>
               <p>Less To Next Rank : 100</p>
-              <button>Upgrade (Coming Soon ⏱)</button>
+              <button>Upgrade [WIP]</button>
 
             </div>
             

@@ -223,7 +223,8 @@ const Community = () => {
                 </div>
             </>) : (<>
                 <div className="appCommunity-Container-Title">
-                <h3>List Of Friends</h3>
+                        <h3>List Of Friends</h3>
+                        <h5>[/!\ WIP]</h5>
 
             </div>
                 <div className="appCommunity-users-list-container  Community-gridItemContainer4">

@@ -125,9 +125,9 @@ const Quests = () => {
                 {isInWaitingList ? (
                     <div className='Quests-renderJoinedQuests-box-container'>
                         <h4>Push New Quest To The Community !</h4>
-                        <p>By Submitting Your Idea,</p>
-                        <p>Act for your ideas !</p>
-                        <button>Coming Soon</button>
+                        <p>By Sharing  Your Idea,</p>
+                        <p>Act for Them !</p>
+                        <button>[WIP]</button>
                     </div>
                 ) : (
                     <div className='Quests-renderJoinedQuests-box-container'>
@@ -198,7 +198,7 @@ const Quests = () => {
 
                         <div className='Quests-users-handle-bg-quest'>
                             {isConnected ? (<>
-                                    <p>Coming Soon ... !</p>
+                                    <p>[WIP] (Work In Progress)</p>
                                     {/* <button><a href="https://twitter.com/intent/tweet?screen_name=proofofless&ref_src=twsrc%5Etfw" class="twitter-mention-button" data-text="This is the beginning of my journey with Proof Of Less !" data-url="https://proof-of-less-front.vercel.app/app" data-related="proofofless" data-show-count="false">Tweet to @proofofless</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script></button> */}
                                     <a class="twitter-share-button"
   href="https://twitter.com/intent/tweet"
