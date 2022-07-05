@@ -16,6 +16,7 @@ const Quests = () => {
     const isConnected = Boolean(userStatus !== 'connect to retrieve');
     const isNotMember = Boolean(userStatus == 'Connected')
     const [isOpen, setIsOpen] = useState(false);
+    const [loading, setLoading] = useState(false);
 
     let tqActualQuestBal = stateAppData.twitterQuestBal
     let tqActualUserBal = stateAppData.twitterUserBal
