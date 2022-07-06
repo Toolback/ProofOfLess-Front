@@ -57,9 +57,23 @@
   border-radius: 20px;
 }
 
+.Quests-users-handle-title{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+#quhtbg{
+  color: white;
+  background-color: #FFA62B;
+  width: 140px;
+  border-radius: 8px;
+}
+
 .Quests-users-handle-bg-quest{
 
-  width: 85%;
+  width: 90%;
   height: 100%;
   background-color: #EDE7E2;
   margin-bottom: 30px;
@@ -69,6 +83,12 @@
 
 
 }
+
+/* #100less{
+  padding: 10px;
+margin: 10px;
+  background-color: #0179B7;
+} */
 
 .Quests-users-list-container{
   display: flex;
@@ -109,6 +129,8 @@
 .Quests-renderJoinedQuests-top-right{
   display: flex;
   flex-direction: column;
+  text-align: left;
+  width: 70%;
   margin-bottom: 10px;
 }
 
@@ -132,6 +154,89 @@
   gap: 20px;
   margin: 20px;
 
+}
+
+.Quests-renderAvailableQuests-box-container{
+  display: flex;
+  align-items: center;
+}
+
+.Quests-renderAvailableQuests-left{
+  width: 90%;
+}
+
+.Quests-renderAvailableQuests-left-top{
+  display: flex;
+  text-align: left;
+
+}
+
+.Quests-renderAvailableQuests-left-top-left{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 25%;
+}
+
+.Quests-TwitterBird{}
+
+.Quests-renderAvailableQuests-left-top-right{}
+
+
+.Quests-renderAvailableQuests-left-top-right-title{
+  display: flex;
+  align-items: center;
+}
+
+#QRAQTRT{
+  width: 30%;
+  font-size: 20px;
+}
+
+#QRAQTRTR{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 200px;
+  height: 40px;
+  font-weight: bold;
+  background-color: #FFA62B;
+  color: white;
+  border-radius: 8px;
+
+}
+.Quests-renderAvailableQuests-left-top-right-text{}
+
+.Quests-renderAvailableQuests-left-bottom{
+  margin-top: 20px;
+  display: flex;
+  width: 100%;
+
+}
+
+.Quests-renderAvailableQuests-left-bottom-stats{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  width: 33%;
+}
+.Quests-renderAvailableQuests-left-bottom-stats-bg{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+  width: 100px;
+  height: 40px;
+  background-color: #0179B7;
+  border-radius: 10px;
+}
+.Quests-renderAvailableQuests-right{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+  width: 20%;
 }
 
 .QRAQB{

@@ -17,7 +17,7 @@ const TwitterQDetails = ({ setIsOpen }) => {
   const [amount, setAmount] = useState(0e6);
 
   let isInWaitingList = stateAppData.inTwitterWaitingList;
-  
+
   let tqS = stateAppData.twitterDataSummary;
   let tqStartAt = tqS.cycleStartAt;
   let tqEndAt = tqS.cycleEndAt;
@@ -31,12 +31,12 @@ const TwitterQDetails = ({ setIsOpen }) => {
     let twitterDataSummary = {}
     let req = {}
     req = await ITwitterQuestInstance.getQuestSummarize();
-    twitterDataSummary.lessTokenAddress = await req.lessTokenAddress;
-    twitterDataSummary.memberShipTokenAddress = await req.memberShipTokenAddress;
-    twitterDataSummary.entryToken = await req.entryToken;
+    // twitterDataSummary.lessTokenAddress = await req.lessTokenAddress;
+    // twitterDataSummary.memberShipTokenAddress = await req.memberShipTokenAddress;
+    // twitterDataSummary.entryToken = await req.entryToken;
     twitterDataSummary.entryCost = parseInt(await req.entryCost.toString().slice(0, -6));
     twitterDataSummary.amountLessReward = parseInt(await req.amountLessReward.toString());
-    twitterDataSummary.actualFees = parseInt(await req.actualFees.toString().slice(0, -6));
+    // twitterDataSummary.actualFees = parseInt(await req.actualFees.toString().slice(0, -6));
     twitterDataSummary.actualQuestBalance = parseInt(await req.actualQuestBalance.toString().slice(0, -6));
     let date1 = new Date(await req.durationPeriod * 1000)
     twitterDataSummary.durationPeriod = date1.toLocaleString();
@@ -93,7 +93,7 @@ const TwitterQDetails = ({ setIsOpen }) => {
 
   function renderWaitingStatus() {
     if (isInWaitingList) {
-      return(<>✅</>)
+      return (<>✅</>)
     } else {
       return (<>❌</>)
     }
@@ -107,44 +107,63 @@ const TwitterQDetails = ({ setIsOpen }) => {
             <div className="modalTwitter-Logo-Container">
               <img src={twitterBird} className="ModalTwitter-TwitterBird" />
             </div>
-            <h3 className="heading">Twitter Quest Summary</h3>
+            <b><h2 className="ModalTwitter-heading">Twitter Quest Summary</h2></b>
           </div>
           <button className="closeBtn" onClick={() => setIsOpen(false)}>
             <RiCloseLine style={{ marginBottom: "-3px" }} />
 
           </button>
           <div className="modalContent">
-            <p>Actual Cycle Started At :</p>
-          <p>{tqStartAt}</p>
-            <p>Actual Cycle Ending / Beginning Of The Next</p>  
-            <p>{tqEndAt}</p>
-            <div className='ModalTwitter-renderJoinedQuests'>
+            <div className="modalContent-left">
+              <h4>Rule </h4>
+              <p>Tweet less than your 6 month weekly average for 4 consecutive week.</p>
+              <p>❗<b>Read Carefully</b></p>
+              <p>To automatically participate in the next quest, you need to: </p>
+              <p>- Supply at least <b>10 USDC</b></p>
+              <p>- Subscribe to the <b>Waiting List</b></p>
+              <p>[Subscription is free while testing]</p>
+            </div>
 
-              <div className='ModalTwitter-renderJoinedQuests-left'>
+            <div className="modalContent-right">
+
+              <b><p>Actual Cycle Started At</p></b>
+              <p>{tqStartAt}</p>
+              <b><p>Actual Cycle Ending / Beginning Of The Next</p></b>
+              <p>{tqEndAt}</p>
+              <div className='ModalTwitter-renderJoinedQuests'>
+
+                <div className='ModalTwitter-renderJoinedQuests-left'>
 
 
-                <p>Total Pool Gain :</p>
-                <p>{tqActualQuestBal} Usdc</p>
-                <p>Your Balance :</p>
-                <p>{tqActualUserBal} Usdc</p>
+                  <p>Total Pool Gain</p>
+                  <p className="buttonTestBgBlue">{tqActualQuestBal} Usdc</p>
+                  <p>Your Balance</p>
+                  <p className="buttonTestBgBlue">{tqActualUserBal} Usdc</p>
+                  <p>Participe ❌</p>
 
-              </div>
+                </div>
 
-              <div className='ModalTwitter-renderJoinedQuests-right'>
-                <p>Total Participants : {tqActualParticipantsNumber}</p>
-                <p>Total Waiting List : {tqActualWaitingListNumber}</p>
-                <p>Participe : ❌</p>
-                <p>Waiting List : {renderWaitingStatus()}</p>
+                <div className='ModalTwitter-renderJoinedQuests-right'>
+                  <p>Total Participants</p>
+                  <p className="buttonTestBgBlue">{tqActualParticipantsNumber}</p>
+                  <p>Total Waiting List</p>
+                  <p className="buttonTestBgBlue">{tqActualWaitingListNumber}</p>
+
+                  <p>Waiting List {renderWaitingStatus()}</p>
+                </div>
 
               </div>
             </div>
-            <p>Entry Cost : {tqEntryCost}</p>
-            <p>Deposit / Withdraw</p>
-            <input type='text' onChange={e => setAmount(e.target.value)} value={amount} />
 
           </div>
           <div className="modalActions">
+            {isConnected ? (<>
+              <p>Entry Cost <p className="buttonTestBgBlue">{tqEntryCost} Usdc</p></p>
+            <p>Deposit / Withdraw</p>
+            <input type='text' onChange={e => setAmount(e.target.value)} value={amount} />
+
             <div className="actionsContainer">
+              
               <button className="deleteBtn" onClick={() => handleSupply()}>
                 Supply
               </button>
@@ -156,6 +175,10 @@ const TwitterQDetails = ({ setIsOpen }) => {
                 Withdraw
               </button>
             </div>
+            </>) : (<>
+              <p className="buttonTestBgBlue">Connect to Join</p>
+            </>
+            )}
           </div>
         </div>
       </div>
