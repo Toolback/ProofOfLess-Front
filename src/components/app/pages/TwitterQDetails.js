@@ -14,7 +14,7 @@ const TwitterQDetails = ({ setIsOpen }) => {
   let userStatus = stateAppData.userStatus
   const isConnected = Boolean(userStatus !== 'connect to retrieve');
 
-  const [amount, setAmount] = useState(0e6);
+  const [amount, setAmount] = useState();
 
   let isInWaitingList = stateAppData.inTwitterWaitingList;
 
@@ -77,10 +77,12 @@ const TwitterQDetails = ({ setIsOpen }) => {
   }
 
   const handleSupply = async () => {
-    let allowAmount = (amount) + 10e6
-    let supplyAmount = amount + 1e6
-    const allowance = await IFreeTokenInstance.approve("0x33b5B87a232e23590a65CC0b10EA710d153D1455", allowAmount)
-    const req = await ITwitterQuestInstance.supplyToPool("0x9aa7fEc87CA69695Dd1f879567CcF49F3ba417E2", supplyAmount)
+    let allowAmount = parseInt(amount.toString() + "000000")
+    let supplyAmount = parseInt(amount.toString() + "000000")
+    // await IFreeTokenInstance.approve("0x49FE770a7d8dff680D2933F6cC0Cc184bF644FD3", allowAmount)
+    // await IFreeTokenInstance.increaseAllowance("0x49FE770a7d8dff680D2933F6cC0Cc184bF644FD3", allowAmount)
+
+    const req = await ITwitterQuestInstance.supplyToPool("0x9aa7fEc87CA69695Dd1f879567CcF49F3ba417E2", allowAmount)
     const data = await req
     const res =
       console.log("CreateUserModal : handleCreateUser() data from db after createUser(): ", data)
@@ -136,7 +138,7 @@ const TwitterQDetails = ({ setIsOpen }) => {
 
 
                   <p>Total Pool Gain</p>
-                  <p className="buttonTestBgBlue">{tqActualQuestBal} Usdc</p>
+                  <p className="buttonTestBgBlue">30 Usdc</p>
                   <p>Your Balance</p>
                   <p className="buttonTestBgBlue">{tqActualUserBal} Usdc</p>
                   <p>Participe ❌</p>

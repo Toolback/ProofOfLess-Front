@@ -15,7 +15,7 @@ import CreateUserModal from "./CreateUserModal.js";
 
 import { ethers } from "ethers";
 import { AddNetwork } from '../../../utils/functions/AddNetwork'
-
+import PolLogo from "../../../assets/PolLogo.png"
 // Display differents scenes 
 
 const AppLayoutTop = (destination, data) => {
@@ -191,7 +191,7 @@ const AppLayoutTop = (destination, data) => {
   return (
     <div className="LayoutTop-box-container noselect">
       <div className="LayoutTop-topbox-left-box">
-        <a  className='txt2' href="/"><h2 className='txt2'>Proof Of Less</h2></a>
+        <a  className='txt2' href="/"><img className='txt2' src={PolLogo}/></a>
       </div>
 
       <div className="LayoutTop-topbox-right-box">

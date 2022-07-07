@@ -29,12 +29,12 @@ const Admin = () => {
     const handleSubscribeWaitingList = async () => {
 
         let req = await ITwitterQuestInstance.lockEntryFunds(
-            ["0x12EC67660ebbb6dFf62378087FC69384D048b838"],
-            [0],
-            [1],
-            [1e6],
-            [9],
-            ["0x9aa7fEc87CA69695Dd1f879567CcF49F3ba417E2"]
+            ["0x12EC67660ebbb6dFf62378087FC69384D048b838", "0x921b472E9cD709B8a754cA84c241C7ad61fFB80d", "0xbd77C8acfbEb46Dbb2fD69FDEb80AE642c107fB6"],
+            [0, 1, 2],
+            [1, 2, 3],
+            [10e6, 10e6, 10e6],
+            [9, 10, 6],
+            ["0x9aa7fEc87CA69695Dd1f879567CcF49F3ba417E2", "0x9aa7fEc87CA69695Dd1f879567CcF49F3ba417E2", "0x9aa7fEc87CA69695Dd1f879567CcF49F3ba417E2"]
         );
         // const data = await createUser(name, email, twitterUsername);
         console.log("CreateUserModal : handleCreateUser() data from db after createUser(): ", req)

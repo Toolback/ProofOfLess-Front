@@ -3,7 +3,7 @@ import { useContext, useState } from 'react'
 import { AppDataStoreContext } from '../../../StoreAppData'
 
 // import { LineChart, Line, XAxis, YAxis, CartesianGrid, Tooltip, ResponsiveContainer } from 'recharts';
-import avatarDonut from "../../../assets/avatarDonut.png"
+import avatarDonut from "../../../assets/donutwhite.png"
 import NftMinter from "./NftMinter"
 
 

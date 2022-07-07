@@ -1,7 +1,7 @@
 import { useContext, useState } from "react";
 import { AppDataStoreContext } from '../../../StoreAppData'
 import "../../../css/app/NftMinter.css"
-import avatarDonut from "../../../assets/avatarDonut.png"
+import avatarDonut from "../../../assets/donutwhite.png"
 
 // import { createUser } from '../../../utils/functions/app/createUser'
 import IMemberShipInstance from '../../../utils/interfaces/IMemberShipInstance';

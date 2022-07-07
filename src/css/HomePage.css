@@ -1,3 +1,7 @@
+.Home-box-container{
+    display: flex;
+    flex-direction: column;
+}
 .Home-general-container {
      display: flex;
      flex-direction: column;
@@ -10,9 +14,23 @@
      color: #32292F;
  }
 
-.Home-title {
-     padding-bottom: 30px;
-     font-size: 32px;
+ .Home-LogoContainer{
+    display: flex;
+    float: left;
+
+ }
+
+ .Home-Title {
+    padding-bottom: 30px;
+    height: 35px;
+}
+
+ .Home-hero-titleLogo{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
  }
 
 .Home-treePlant-image {

@@ -40,7 +40,6 @@ const Quests = () => {
         twitterDataSummary.actualWaitingListSubscribeAddress = await req.actualWaitingListSubscribeAddress;
 
 
-
         await dispatchAppData({
             type: 'setAppData',
             ...stateAppData,
@@ -134,8 +133,9 @@ const Quests = () => {
                                 <p>Participe ❌</p>
                                 <p>Actual Quest Gain</p>
                                 <div className='Quests-renderAvailableQuests-left-bottom-stats-bg'>
-                                    <b><p>{rjqQuestBal} Usdc</p></b>
-                                </div>
+                                    <b><p>30 Usdc</p></b>
+                                </div> 
+                                
 
 
                             </div>
@@ -183,6 +183,7 @@ const Quests = () => {
         let tqActualQuestBal = tqS.actualQuestBalance
         let tqActualParticipantsNumber = tqS.actualParticipantsNumber
         let tqEntryCost = stateAppData.twitterDataSummary.entryCost;
+        console.log("tqActualQuestBal", tqActualQuestBal)
 
         return (
             <>
